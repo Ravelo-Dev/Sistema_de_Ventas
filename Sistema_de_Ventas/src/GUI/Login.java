@@ -9,12 +9,20 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+import javax.swing.UIManager;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Txt_Usuario;
-	private JTextField textField;
+	private JPasswordField Txt_Password;
 
 	/**
 	 * Launch the application.
@@ -37,46 +45,90 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 840, 524);
+		setBounds(100, 100, 840, 577);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel Img_Verde_Login = new JLabel("");
-		Img_Verde_Login.setIcon(new ImageIcon(Login.class.getResource("/Img/Verde_login.jpeg")));
-		Img_Verde_Login.setBounds(505, 0, 319, 485);
-		contentPane.add(Img_Verde_Login);
+		JLabel Img_tenis_Login = new JLabel("");
+		Img_tenis_Login.setIcon(new ImageIcon(Login.class.getResource("/Img/img_tenis_login.jpg")));
+		Img_tenis_Login.setBounds(505, 0, 319, 538);
+		contentPane.add(Img_tenis_Login);
 		
 		JPanel Panel_main_login = new JPanel();
-		Panel_main_login.setBounds(0, 0, 505, 485);
+		Panel_main_login.setBounds(0, 0, 505, 538);
 		contentPane.add(Panel_main_login);
 		Panel_main_login.setLayout(null);
 		
 		JLabel Lbl_IniciarSesion = new JLabel("INICIAR SESION");
+		Lbl_IniciarSesion.setLabelFor(this);
+		Lbl_IniciarSesion.setIcon(new ImageIcon(Login.class.getResource("/Img/sneakers.png")));
 		Lbl_IniciarSesion.setFont(new Font("Roboto Black", Font.PLAIN, 20));
-		Lbl_IniciarSesion.setBounds(56, 160, 152, 14);
+		Lbl_IniciarSesion.setBounds(145, 181, 221, 36);
 		Panel_main_login.add(Lbl_IniciarSesion);
 		
 		JLabel Lbl_Usuario = new JLabel("USUARIO");
 		Lbl_Usuario.setFont(new Font("Roboto", Font.PLAIN, 17));
-		Lbl_Usuario.setBounds(56, 215, 101, 14);
+		Lbl_Usuario.setBounds(44, 244, 152, 21);
 		Panel_main_login.add(Lbl_Usuario);
 		
 		Txt_Usuario = new JTextField();
-		Txt_Usuario.setBounds(56, 240, 386, 36);
+		Txt_Usuario.setBorder(null);
+		Txt_Usuario.setBounds(44, 276, 410, 36);
 		Panel_main_login.add(Txt_Usuario);
 		Txt_Usuario.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(56, 332, 386, 36);
-		Panel_main_login.add(textField);
-		
-		JLabel Lbl_Password = new JLabel("USUARIO");
+		JLabel Lbl_Password = new JLabel("CONTRASEÑA");
 		Lbl_Password.setFont(new Font("Roboto", Font.PLAIN, 17));
-		Lbl_Password.setBounds(56, 307, 101, 14);
+		Lbl_Password.setBounds(44, 336, 152, 21);
 		Panel_main_login.add(Lbl_Password);
+		
+		Txt_Password = new JPasswordField();
+		Txt_Password.setBorder(null);
+		Txt_Password.setBounds(44, 368, 410, 36);
+		Panel_main_login.add(Txt_Password);
+		
+		JSeparator separator_Usuario = new JSeparator();
+		separator_Usuario.setForeground(new Color(243, 113, 56));
+		separator_Usuario.setBackground(new Color(243, 113, 56));
+		separator_Usuario.setBounds(44, 314, 410, 11);
+		Panel_main_login.add(separator_Usuario);
+		
+		JSeparator separator_Password = new JSeparator();
+		separator_Password.setForeground(new Color(243, 113, 56));
+		separator_Password.setBackground(new Color(243, 113, 56));
+		separator_Password.setBounds(44, 406, 410, 11);
+		Panel_main_login.add(separator_Password);
+		
+		JLabel Icon_login = new JLabel("");
+		Icon_login.setIcon(new ImageIcon(Login.class.getResource("/Img/user (1).png")));
+		Icon_login.setBounds(191, 35, 128, 135);
+		Panel_main_login.add(Icon_login);
+		
+		JPanel Btn_Entrar = new JPanel();
+		Btn_Entrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Entrar.setBackground(new Color(245,142,99));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Entrar.setBackground(new Color(243, 113, 56));
+			}
+		});
+		Btn_Entrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		Btn_Entrar.setBackground(new Color(243, 113, 56));
+		Btn_Entrar.setBounds(44, 449, 167, 50);
+		Panel_main_login.add(Btn_Entrar);
+		Btn_Entrar.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("ENTRAR");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 16));
+		lblNewLabel.setBounds(38, 11, 91, 28);
+		Btn_Entrar.add(lblNewLabel);
 	}
 }
