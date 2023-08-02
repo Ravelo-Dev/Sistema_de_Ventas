@@ -74,63 +74,69 @@ public class Sistema extends JFrame {
 		Panel_menu.setLayout(null);
 		
 		JPanel Btn_NuevaVenta = new JPanel();
-		Btn_NuevaVenta.setBounds(0, 225, 264, 53);
+		Btn_NuevaVenta.setBounds(0, 225, 264, 66);
 		Panel_menu.add(Btn_NuevaVenta);
 		Btn_NuevaVenta.setLayout(null);
 		
 		JLabel Lbl_Btn_NuevaVenta = new JLabel("NUEVA VENTA");
+		Lbl_Btn_NuevaVenta.setIcon(new ImageIcon(Sistema.class.getResource("/Img/carrito-de-compras.png")));
 		Lbl_Btn_NuevaVenta.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_NuevaVenta.setBounds(68, 11, 119, 31);
+		Lbl_Btn_NuevaVenta.setBounds(32, 11, 161, 43);
 		Btn_NuevaVenta.add(Lbl_Btn_NuevaVenta);
 		
 		JPanel Btn_Clientes = new JPanel();
-		Btn_Clientes.setBounds(0, 302, 264, 53);
+		Btn_Clientes.setBounds(0, 302, 264, 65);
 		Panel_menu.add(Btn_Clientes);
 		Btn_Clientes.setLayout(null);
 		
 		JLabel Lbl_Btn_Clientes = new JLabel("CLIENTES");
+		Lbl_Btn_Clientes.setIcon(new ImageIcon(Sistema.class.getResource("/Img/atencion-al-cliente.png")));
 		Lbl_Btn_Clientes.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Clientes.setBounds(86, 11, 82, 31);
+		Lbl_Btn_Clientes.setBounds(33, 11, 118, 43);
 		Btn_Clientes.add(Lbl_Btn_Clientes);
 		
 		JPanel Btn_Proveedores = new JPanel();
-		Btn_Proveedores.setBounds(0, 378, 264, 53);
+		Btn_Proveedores.setBounds(0, 378, 264, 67);
 		Panel_menu.add(Btn_Proveedores);
 		Btn_Proveedores.setLayout(null);
 		
 		JLabel Lbl_Btn_Proveedores = new JLabel("PROVEEDORES");
+		Lbl_Btn_Proveedores.setIcon(new ImageIcon(Sistema.class.getResource("/Img/gestion-de-la-relacion-con-el-cliente.png")));
 		Lbl_Btn_Proveedores.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Proveedores.setBounds(69, 11, 121, 31);
+		Lbl_Btn_Proveedores.setBounds(33, 11, 157, 43);
 		Btn_Proveedores.add(Lbl_Btn_Proveedores);
 		
 		JPanel Btn_Productos = new JPanel();
-		Btn_Productos.setBounds(0, 456, 264, 53);
+		Btn_Productos.setBounds(0, 456, 264, 66);
 		Panel_menu.add(Btn_Productos);
 		Btn_Productos.setLayout(null);
 		
 		JLabel Lbl_Btn_Productos = new JLabel("PRODUCTOS");
+		Lbl_Btn_Productos.setIcon(new ImageIcon(Sistema.class.getResource("/Img/inventario.png")));
 		Lbl_Btn_Productos.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Productos.setBounds(76, 11, 119, 31);
+		Lbl_Btn_Productos.setBounds(36, 11, 159, 43);
 		Btn_Productos.add(Lbl_Btn_Productos);
 		
 		JPanel Btn_Ventas = new JPanel();
-		Btn_Ventas.setBounds(0, 533, 264, 53);
+		Btn_Ventas.setBounds(0, 533, 264, 64);
 		Panel_menu.add(Btn_Ventas);
 		Btn_Ventas.setLayout(null);
 		
 		JLabel Lbl_Btn_Ventas = new JLabel("VENTAS");
+		Lbl_Btn_Ventas.setIcon(new ImageIcon(Sistema.class.getResource("/Img/ventas.png")));
 		Lbl_Btn_Ventas.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Ventas.setBounds(96, 11, 68, 31);
+		Lbl_Btn_Ventas.setBounds(38, 11, 110, 43);
 		Btn_Ventas.add(Lbl_Btn_Ventas);
 		
 		JPanel Btn_Config = new JPanel();
-		Btn_Config.setBounds(0, 608, 264, 53);
+		Btn_Config.setBounds(0, 608, 264, 64);
 		Panel_menu.add(Btn_Config);
 		Btn_Config.setLayout(null);
 		
 		JLabel Lbl_Btn_Config = new JLabel("CONFIG");
+		Lbl_Btn_Config.setIcon(new ImageIcon(Sistema.class.getResource("/Img/configuraciones.png")));
 		Lbl_Btn_Config.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Config.setBounds(98, 11, 64, 31);
+		Lbl_Btn_Config.setBounds(40, 11, 116, 42);
 		Btn_Config.add(Lbl_Btn_Config);
 		
 		JTabbedPane TabbedPane_ventanas = new JTabbedPane(JTabbedPane.TOP);
