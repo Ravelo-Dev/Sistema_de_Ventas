@@ -63,8 +63,8 @@ public class Login extends JFrame {
 		Panel_main_login.setLayout(null);
 		
 		JLabel Lbl_IniciarSesion = new JLabel("INICIAR SESION");
+		Lbl_IniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_IniciarSesion.setLabelFor(this);
-		Lbl_IniciarSesion.setIcon(new ImageIcon(Login.class.getResource("/Img/sneakers.png")));
 		Lbl_IniciarSesion.setFont(new Font("Roboto Black", Font.PLAIN, 20));
 		Lbl_IniciarSesion.setBounds(145, 181, 221, 36);
 		Panel_main_login.add(Lbl_IniciarSesion);
@@ -109,13 +109,23 @@ public class Login extends JFrame {
 		
 		JPanel Btn_Entrar = new JPanel();
 		Btn_Entrar.addMouseListener(new MouseAdapter() {
+			
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				Btn_Entrar.setBackground(new Color(245,142,99));
 			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Btn_Entrar.setBackground(new Color(243, 113, 56));
+			}
+			
+		/*ACCION AL HACER CLICK AQUI*/
+			@Override
+			public void mouseClicked(MouseEvent e) {
 			}
 		});
 		Btn_Entrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -124,11 +134,11 @@ public class Login extends JFrame {
 		Panel_main_login.add(Btn_Entrar);
 		Btn_Entrar.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("ENTRAR");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 16));
-		lblNewLabel.setBounds(38, 11, 91, 28);
-		Btn_Entrar.add(lblNewLabel);
+		JLabel Lbl_Btn_Entrar = new JLabel("ENTRAR");
+		Lbl_Btn_Entrar.setForeground(Color.WHITE);
+		Lbl_Btn_Entrar.setHorizontalAlignment(SwingConstants.CENTER);
+		Lbl_Btn_Entrar.setFont(new Font("Roboto", Font.PLAIN, 16));
+		Lbl_Btn_Entrar.setBounds(38, 11, 91, 28);
+		Btn_Entrar.add(Lbl_Btn_Entrar);
 	}
 }
