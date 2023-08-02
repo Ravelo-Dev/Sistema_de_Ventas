@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import rsscalelabel.RSScaleLabel;
-
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Dimension;
