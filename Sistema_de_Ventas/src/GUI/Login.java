@@ -21,7 +21,7 @@ import java.awt.event.MouseEvent;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField Txt_Usuario;
+	private JTextField Txt_Correo;
 	private JPasswordField Txt_Password;
 
 	/**
@@ -69,20 +69,20 @@ public class Login extends JFrame {
 		Lbl_IniciarSesion.setBounds(145, 181, 221, 36);
 		Panel_main_login.add(Lbl_IniciarSesion);
 		
-		JLabel Lbl_Usuario = new JLabel("USUARIO");
-		Lbl_Usuario.setFont(new Font("Roboto", Font.PLAIN, 17));
-		Lbl_Usuario.setBounds(44, 244, 152, 21);
-		Panel_main_login.add(Lbl_Usuario);
+		JLabel Lbl_Correo = new JLabel("CORREO ELECTRONICO");
+		Lbl_Correo.setFont(new Font("Roboto", Font.PLAIN, 17));
+		Lbl_Correo.setBounds(44, 244, 189, 21);
+		Panel_main_login.add(Lbl_Correo);
 		
-		Txt_Usuario = new JTextField();
-		Txt_Usuario.setBorder(null);
-		Txt_Usuario.setBounds(44, 276, 410, 36);
-		Panel_main_login.add(Txt_Usuario);
-		Txt_Usuario.setColumns(10);
+		Txt_Correo = new JTextField();
+		Txt_Correo.setBorder(null);
+		Txt_Correo.setBounds(44, 276, 410, 36);
+		Panel_main_login.add(Txt_Correo);
+		Txt_Correo.setColumns(10);
 		
 		JLabel Lbl_Password = new JLabel("CONTRASEÑA");
 		Lbl_Password.setFont(new Font("Roboto", Font.PLAIN, 17));
-		Lbl_Password.setBounds(44, 336, 152, 21);
+		Lbl_Password.setBounds(44, 336, 189, 21);
 		Panel_main_login.add(Lbl_Password);
 		
 		Txt_Password = new JPasswordField();
@@ -90,11 +90,11 @@ public class Login extends JFrame {
 		Txt_Password.setBounds(44, 368, 410, 36);
 		Panel_main_login.add(Txt_Password);
 		
-		JSeparator separator_Usuario = new JSeparator();
-		separator_Usuario.setForeground(new Color(243, 113, 56));
-		separator_Usuario.setBackground(new Color(243, 113, 56));
-		separator_Usuario.setBounds(44, 314, 410, 11);
-		Panel_main_login.add(separator_Usuario);
+		JSeparator separator_Correo = new JSeparator();
+		separator_Correo.setForeground(new Color(243, 113, 56));
+		separator_Correo.setBackground(new Color(243, 113, 56));
+		separator_Correo.setBounds(44, 314, 410, 11);
+		Panel_main_login.add(separator_Correo);
 		
 		JSeparator separator_Password = new JSeparator();
 		separator_Password.setForeground(new Color(243, 113, 56));
