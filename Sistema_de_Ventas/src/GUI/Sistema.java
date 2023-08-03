@@ -126,7 +126,7 @@ public class Sistema extends JFrame {
 		JLabel Lbl_Btn_Clientes = new JLabel("CLIENTES");
 		Lbl_Btn_Clientes.setIcon(new ImageIcon(Sistema.class.getResource("/Img/atencion-al-cliente.png")));
 		Lbl_Btn_Clientes.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Clientes.setBounds(33, 11, 118, 43);
+		Lbl_Btn_Clientes.setBounds(33, 11, 174, 43);
 		Btn_Clientes.add(Lbl_Btn_Clientes);
 		
 		JPanel Btn_Proveedores = new JPanel();
@@ -152,7 +152,7 @@ public class Sistema extends JFrame {
 		JLabel Lbl_Btn_Proveedores = new JLabel("PROVEEDORES");
 		Lbl_Btn_Proveedores.setIcon(new ImageIcon(Sistema.class.getResource("/Img/gestion-de-la-relacion-con-el-cliente.png")));
 		Lbl_Btn_Proveedores.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Proveedores.setBounds(33, 11, 157, 43);
+		Lbl_Btn_Proveedores.setBounds(33, 11, 199, 43);
 		Btn_Proveedores.add(Lbl_Btn_Proveedores);
 		
 		JPanel Btn_Productos = new JPanel();
@@ -377,7 +377,7 @@ public class Sistema extends JFrame {
 		
 		JPanel Btn_Imprimir = new JPanel();
 		Btn_Imprimir.setBounds(435, 360, 115, 33);
-		Btn_Imprimir.setBackground(new Color(128, 255, 0));
+		Btn_Imprimir.setBackground(new Color(252, 172, 66));
 		PanelVentana_NuevaVenta.add(Btn_Imprimir);
 		Btn_Imprimir.setLayout(null);
 		
