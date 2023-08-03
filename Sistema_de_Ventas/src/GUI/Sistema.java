@@ -103,32 +103,6 @@ public class Sistema extends JFrame {
 		Lbl_Btn_NuevaVenta.setBounds(32, 11, 161, 43);
 		Btn_NuevaVenta.add(Lbl_Btn_NuevaVenta);
 		
-		JPanel Btn_Clientes = new JPanel();
-		Btn_Clientes.addMouseListener(new MouseAdapter() {
-		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
-		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Btn_Clientes.setBackground(new Color(253,196,111));
-			}
-			
-		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Btn_Clientes.setBackground(new Color(252, 176, 66));
-			}
-		});
-		Btn_Clientes.setBackground(new Color(252, 176, 66));
-		Btn_Clientes.setBounds(0, 302, 264, 65);
-		Panel_menu.add(Btn_Clientes);
-		Btn_Clientes.setLayout(null);
-		
-		JLabel Lbl_Btn_Clientes = new JLabel("CLIENTES");
-		Lbl_Btn_Clientes.setIcon(new ImageIcon(Sistema.class.getResource("/Img/atencion-al-cliente.png")));
-		Lbl_Btn_Clientes.setFont(new Font("Roboto", Font.PLAIN, 18));
-		Lbl_Btn_Clientes.setBounds(33, 11, 174, 43);
-		Btn_Clientes.add(Lbl_Btn_Clientes);
-		
 		JPanel Btn_Proveedores = new JPanel();
 		Btn_Proveedores.addMouseListener(new MouseAdapter() {
 		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
@@ -232,6 +206,32 @@ public class Sistema extends JFrame {
 		Lbl_Btn_Config.setFont(new Font("Roboto", Font.PLAIN, 18));
 		Lbl_Btn_Config.setBounds(40, 11, 116, 42);
 		Btn_Config.add(Lbl_Btn_Config);
+		
+		JPanel Btn_Clientes = new JPanel();
+		Btn_Clientes.setBounds(0, 302, 264, 65);
+		Panel_menu.add(Btn_Clientes);
+		Btn_Clientes.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Clientes.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Clientes.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_Clientes.setBackground(new Color(252, 176, 66));
+		Btn_Clientes.setLayout(null);
+		
+		JLabel Lbl_Btn_Clientes = new JLabel("CLIENTES");
+		Lbl_Btn_Clientes.setIcon(new ImageIcon(Sistema.class.getResource("/Img/atencion-al-cliente.png")));
+		Lbl_Btn_Clientes.setFont(new Font("Roboto", Font.PLAIN, 18));
+		Lbl_Btn_Clientes.setBounds(32, 11, 174, 43);
+		Btn_Clientes.add(Lbl_Btn_Clientes);
 		
 		JTabbedPane TabbedPane_ventanas = new JTabbedPane(JTabbedPane.TOP);
 		TabbedPane_ventanas.setBounds(264, 219, 1020, 463);
