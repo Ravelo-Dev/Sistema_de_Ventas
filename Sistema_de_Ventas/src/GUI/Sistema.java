@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JTabbedPane;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Sistema extends JFrame {
 
@@ -72,6 +74,21 @@ public class Sistema extends JFrame {
 		Panel_menu.setLayout(null);
 		
 		JPanel Btn_NuevaVenta = new JPanel();
+		Btn_NuevaVenta.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_NuevaVenta.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_NuevaVenta.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_NuevaVenta.setBackground(new Color(252, 176, 66));
 		Btn_NuevaVenta.setBounds(0, 225, 264, 66);
 		Panel_menu.add(Btn_NuevaVenta);
 		Btn_NuevaVenta.setLayout(null);
@@ -83,6 +100,21 @@ public class Sistema extends JFrame {
 		Btn_NuevaVenta.add(Lbl_Btn_NuevaVenta);
 		
 		JPanel Btn_Clientes = new JPanel();
+		Btn_Clientes.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Clientes.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Clientes.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_Clientes.setBackground(new Color(252, 176, 66));
 		Btn_Clientes.setBounds(0, 302, 264, 65);
 		Panel_menu.add(Btn_Clientes);
 		Btn_Clientes.setLayout(null);
@@ -94,6 +126,21 @@ public class Sistema extends JFrame {
 		Btn_Clientes.add(Lbl_Btn_Clientes);
 		
 		JPanel Btn_Proveedores = new JPanel();
+		Btn_Proveedores.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Proveedores.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Proveedores.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_Proveedores.setBackground(new Color(252, 176, 66));
 		Btn_Proveedores.setBounds(0, 378, 264, 67);
 		Panel_menu.add(Btn_Proveedores);
 		Btn_Proveedores.setLayout(null);
@@ -105,6 +152,21 @@ public class Sistema extends JFrame {
 		Btn_Proveedores.add(Lbl_Btn_Proveedores);
 		
 		JPanel Btn_Productos = new JPanel();
+		Btn_Productos.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Productos.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Productos.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_Productos.setBackground(new Color(252, 176, 66));
 		Btn_Productos.setBounds(0, 456, 264, 66);
 		Panel_menu.add(Btn_Productos);
 		Btn_Productos.setLayout(null);
@@ -116,6 +178,21 @@ public class Sistema extends JFrame {
 		Btn_Productos.add(Lbl_Btn_Productos);
 		
 		JPanel Btn_Ventas = new JPanel();
+		Btn_Ventas.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Ventas.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Ventas.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_Ventas.setBackground(new Color(252, 176, 66));
 		Btn_Ventas.setBounds(0, 533, 264, 64);
 		Panel_menu.add(Btn_Ventas);
 		Btn_Ventas.setLayout(null);
@@ -127,6 +204,21 @@ public class Sistema extends JFrame {
 		Btn_Ventas.add(Lbl_Btn_Ventas);
 		
 		JPanel Btn_Config = new JPanel();
+		Btn_Config.addMouseListener(new MouseAdapter() {
+		/*LA SIGUIENTE LINEA CAMBIA EL COLOR DEL PANEL UTILIZADO COMO BOTON,
+		 * A UNO MAS CLARO PARA HACER VER QUE ES CLICKEABLE	*/
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Btn_Config.setBackground(new Color(253,196,111));
+			}
+			
+		/*REGRESA EL PANEL A SU COLOR ORIGINAL*/	
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_Config.setBackground(new Color(252, 176, 66));
+			}
+		});
+		Btn_Config.setBackground(new Color(252, 176, 66));
 		Btn_Config.setBounds(0, 608, 264, 64);
 		Panel_menu.add(Btn_Config);
 		Btn_Config.setLayout(null);
@@ -142,22 +234,22 @@ public class Sistema extends JFrame {
 		Panel_main_sistema.add(TabbedPane_ventanas);
 		
 		JPanel panel = new JPanel();
-		TabbedPane_ventanas.addTab("New tab", null, panel, null);
+		TabbedPane_ventanas.addTab("", new ImageIcon(Sistema.class.getResource("/Img/carrito-de-compras.png")), panel, null);
 		
 		JPanel panel_1 = new JPanel();
-		TabbedPane_ventanas.addTab("New tab", null, panel_1, null);
+		TabbedPane_ventanas.addTab("", new ImageIcon(Sistema.class.getResource("/Img/atencion-al-cliente.png")), panel_1, null);
 		
 		JPanel panel_2 = new JPanel();
-		TabbedPane_ventanas.addTab("New tab", null, panel_2, null);
+		TabbedPane_ventanas.addTab("", new ImageIcon(Sistema.class.getResource("/Img/gestion-de-la-relacion-con-el-cliente.png")), panel_2, null);
 		
 		JPanel panel_3 = new JPanel();
-		TabbedPane_ventanas.addTab("New tab", null, panel_3, null);
+		TabbedPane_ventanas.addTab("", new ImageIcon(Sistema.class.getResource("/Img/inventario.png")), panel_3, null);
 		
 		JPanel panel_4 = new JPanel();
-		TabbedPane_ventanas.addTab("New tab", null, panel_4, null);
+		TabbedPane_ventanas.addTab("", new ImageIcon(Sistema.class.getResource("/Img/ventas.png")), panel_4, null);
 		
 		JPanel panel_5 = new JPanel();
-		TabbedPane_ventanas.addTab("New tab", null, panel_5, null);
+		TabbedPane_ventanas.addTab("", new ImageIcon(Sistema.class.getResource("/Img/configuraciones.png")), panel_5, null);
 		
 		
 	}
