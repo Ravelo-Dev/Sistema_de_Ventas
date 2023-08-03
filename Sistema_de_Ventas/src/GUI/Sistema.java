@@ -377,7 +377,7 @@ public class Sistema extends JFrame {
 		
 		JPanel Btn_Imprimir = new JPanel();
 		Btn_Imprimir.setBounds(435, 360, 115, 33);
-		Btn_Imprimir.setBackground(new Color(252, 176, 66));
+		Btn_Imprimir.setBackground(new Color(128, 255, 0));
 		PanelVentana_NuevaVenta.add(Btn_Imprimir);
 		Btn_Imprimir.setLayout(null);
 		
