@@ -128,6 +128,7 @@ public class Login extends JFrame {
 		/*ACCION AL HACER CLICK AQUI*/
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 			}
 		});
 		Btn_Entrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
