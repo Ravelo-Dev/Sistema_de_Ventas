@@ -35,7 +35,6 @@ public class Conexion {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_de_ventas", "root", "");
-			JOptionPane.showMessageDialog(null, "Conexion establecida");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Conexion no establecida" + e.getMessage());
 		}
