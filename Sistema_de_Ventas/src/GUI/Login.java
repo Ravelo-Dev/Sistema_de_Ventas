@@ -5,7 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Config.*;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -17,11 +21,13 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import Mod_Consultas.*;
+
 
 public class Login extends JFrame {
-
+	Conexion Cnxn = new Conexion();
 	private JPanel contentPane;
-	private JTextField Txt_Correo;
+	private JTextField Txt_Usuario;
 	private JPasswordField Txt_Password;
 
 	/**
@@ -71,16 +77,16 @@ public class Login extends JFrame {
 		Lbl_IniciarSesion.setBounds(145, 181, 221, 36);
 		Panel_main_login.add(Lbl_IniciarSesion);
 		
-		JLabel Lbl_Correo = new JLabel("CORREO ELECTRONICO");
-		Lbl_Correo.setFont(new Font("Roboto", Font.PLAIN, 17));
-		Lbl_Correo.setBounds(44, 244, 189, 21);
-		Panel_main_login.add(Lbl_Correo);
+		JLabel Lbl_Usuario = new JLabel("USUARIO");
+		Lbl_Usuario.setFont(new Font("Roboto", Font.PLAIN, 17));
+		Lbl_Usuario.setBounds(44, 244, 189, 21);
+		Panel_main_login.add(Lbl_Usuario);
 		
-		Txt_Correo = new JTextField();
-		Txt_Correo.setBorder(null);
-		Txt_Correo.setBounds(44, 276, 410, 36);
-		Panel_main_login.add(Txt_Correo);
-		Txt_Correo.setColumns(10);
+		Txt_Usuario = new JTextField();
+		Txt_Usuario.setBorder(null);
+		Txt_Usuario.setBounds(44, 276, 410, 36);
+		Panel_main_login.add(Txt_Usuario);
+		Txt_Usuario.setColumns(10);
 		
 		JLabel Lbl_Password = new JLabel("CONTRASEÑA");
 		Lbl_Password.setFont(new Font("Roboto", Font.PLAIN, 17));
@@ -92,11 +98,11 @@ public class Login extends JFrame {
 		Txt_Password.setBounds(44, 368, 410, 36);
 		Panel_main_login.add(Txt_Password);
 		
-		JSeparator separator_Correo = new JSeparator();
-		separator_Correo.setForeground(new Color(243, 113, 56));
-		separator_Correo.setBackground(new Color(243, 113, 56));
-		separator_Correo.setBounds(44, 314, 410, 11);
-		Panel_main_login.add(separator_Correo);
+		JSeparator separator_Usuario = new JSeparator();
+		separator_Usuario.setForeground(new Color(243, 113, 56));
+		separator_Usuario.setBackground(new Color(243, 113, 56));
+		separator_Usuario.setBounds(44, 314, 410, 11);
+		Panel_main_login.add(separator_Usuario);
 		
 		JSeparator separator_Password = new JSeparator();
 		separator_Password.setForeground(new Color(243, 113, 56));
@@ -128,8 +134,8 @@ public class Login extends JFrame {
 		/*ACCION AL HACER CLICK AQUI*/
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				
+				Validar();
+
 			}
 		});
 		Btn_Entrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -145,4 +151,24 @@ public class Login extends JFrame {
 		Lbl_Btn_Entrar.setBounds(38, 11, 91, 28);
 		Btn_Entrar.add(Lbl_Btn_Entrar);
 	}
+	
+	/*METODOS DEL LOGIN*/
+	
+	 public void Validar() { 
+		 String Nombre = Txt_Usuario.getText(); 
+		 String Pass = String.valueOf(Txt_Password.getPassword()); 
+		 if (!"".equals(Nombre) | !"".equals(Pass)) { 
+			 Usuarios USER = new Usuarios(); 
+			 ObtenerUserLogin Ob_User_Log = new ObtenerUserLogin(); 
+			 USER = Ob_User_Log.log(Nombre, Pass);
+			 if (USER.getNombre() != null && USER.getPass() != null) {
+				 Sistema Sys = new Sistema();
+				 Sys.setVisible(true);
+				 dispose();
+				 
+			 }
+			 
+		 } 
+	}
+	 
 }
