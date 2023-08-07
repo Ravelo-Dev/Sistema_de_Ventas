@@ -25,6 +25,10 @@ import Mod_Consultas.*;
 
 
 public class Login extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Conexion Cnxn = new Conexion();
 	private JPanel contentPane;
 	private JTextField Txt_Usuario;

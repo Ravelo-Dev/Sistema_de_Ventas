@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 
 public class Form_Config extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField Txt_RUC;
 	private JTextField Txt_Nombre;
 	private JTextField Txt_Telefono;

@@ -15,6 +15,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Form_Clientes extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField Txt_DNI_RUC;
 	private JTextField Txt_Nombre;
 	private JTextField Txt_Telefono;
