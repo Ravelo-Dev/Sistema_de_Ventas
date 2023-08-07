@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
@@ -33,7 +35,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField Txt_Usuario;
 	private JPasswordField Txt_Password;
-
+    private Sistema sys;
 	/**
 	 * Launch the application.
 	 */
@@ -166,10 +168,8 @@ public class Login extends JFrame {
 			 ObtenerUserLogin Ob_User_Log = new ObtenerUserLogin(); 
 			 USER = Ob_User_Log.log(Nombre, Pass);
 			 if (USER.getNombre() != null && USER.getPass() != null) {
-				 Sistema Sys = new Sistema();
-				 Sys.setVisible(true);
-				 dispose();
-				 
+				 Sistema sys = new Sistema();
+			     
 			 }
 			 
 		 } 
