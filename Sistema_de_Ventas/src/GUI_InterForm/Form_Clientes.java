@@ -13,6 +13,7 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
 
 public class Form_Clientes extends JInternalFrame {
 	/**
@@ -46,6 +47,7 @@ public class Form_Clientes extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Form_Clientes() {
+		setClosable(true);
 		setBounds(100, 100, 950, 682);
 		getContentPane().setLayout(null);
 		

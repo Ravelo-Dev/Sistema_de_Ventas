@@ -44,6 +44,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Form_NuevaVenta() {
+		setClosable(true);
 		setBounds(100, 100, 950, 682);
 		getContentPane().setLayout(null);
 		

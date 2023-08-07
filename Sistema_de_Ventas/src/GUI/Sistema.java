@@ -3,7 +3,7 @@ package GUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+//import javax.swing.JPanel;
 
 import GUI_InterForm.Form_Clientes;
 import GUI_InterForm.Form_Config;

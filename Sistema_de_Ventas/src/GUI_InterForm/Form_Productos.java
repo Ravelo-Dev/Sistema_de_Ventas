@@ -42,6 +42,7 @@ public class Form_Productos extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Form_Productos() {
+		setClosable(true);
 		setBounds(100, 100, 950, 682);
 		getContentPane().setLayout(null);
 		

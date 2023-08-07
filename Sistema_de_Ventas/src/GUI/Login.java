@@ -27,15 +27,12 @@ import Mod_Consultas.*;
 
 
 public class Login extends JFrame {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	Conexion Cnxn = new Conexion();
 	private JPanel contentPane;
 	private JTextField Txt_Usuario;
 	private JPasswordField Txt_Password;
-    private Sistema sys;
+
 	/**
 	 * Launch the application.
 	 */
@@ -163,13 +160,17 @@ public class Login extends JFrame {
 	 public void Validar() { 
 		 String Nombre = Txt_Usuario.getText(); 
 		 String Pass = String.valueOf(Txt_Password.getPassword()); 
+		 Usuarios USER = new Usuarios(); 
+		 //IU_Principal P = new IU_Principal();
+		 Sistema Sys = new Sistema();
+		 ObtenerUserLogin Ob_User_Log = new ObtenerUserLogin(); 
 		 if (!"".equals(Nombre) | !"".equals(Pass)) { 
-			 Usuarios USER = new Usuarios(); 
-			 ObtenerUserLogin Ob_User_Log = new ObtenerUserLogin(); 
 			 USER = Ob_User_Log.log(Nombre, Pass);
 			 if (USER.getNombre() != null && USER.getPass() != null) {
-				 Sistema sys = new Sistema();
-			     
+				Sys.main(null);
+				dispose(); 
+				 
+				 
 			 }
 			 
 		 } 
