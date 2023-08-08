@@ -1,24 +1,35 @@
 package GUI_InterForm;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JSeparator;
-import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JFrame;
+
+import Mod_Consultas.Cliente;
+import Mod_Consultas.ClienteDB;
+
+
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Form_Clientes extends JInternalFrame {
-	/**
-	 * 
-	 */
+	
+	Cliente cl = new Cliente();
+	ClienteDB Nclientes = new ClienteDB();
+	
 	private static final long serialVersionUID = 1L;
 	private JTextField Txt_DNI_RUC;
 	private JTextField Txt_Nombre;
@@ -176,18 +187,6 @@ public class Form_Clientes extends JInternalFrame {
 		Panel_LateralClientes.setBounds(0, 0, 317, 652);
 		Panel_Main_Clientes.add(Panel_LateralClientes);
 		
-		JPanel Btn_Guardar = new JPanel();
-		Btn_Guardar.setLayout(null);
-		Btn_Guardar.setBackground(new Color(252, 176, 66));
-		Btn_Guardar.setBounds(374, 580, 115, 33);
-		Panel_Main_Clientes.add(Btn_Guardar);
-		
-		JLabel Lbl_Btn_Guardar = new JLabel("GUARDAR");
-		Lbl_Btn_Guardar.setHorizontalAlignment(SwingConstants.CENTER);
-		Lbl_Btn_Guardar.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_Guardar.setBounds(10, 0, 95, 33);
-		Btn_Guardar.add(Lbl_Btn_Guardar);
-		
 		JPanel Btn_Actualizar = new JPanel();
 		Btn_Actualizar.setLayout(null);
 		Btn_Actualizar.setBackground(new Color(252, 176, 66));
@@ -223,6 +222,35 @@ public class Form_Clientes extends JInternalFrame {
 		Lbl_Btn_Nuevo.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Lbl_Btn_Nuevo.setBounds(10, 0, 95, 33);
 		Btn_Nuevo.add(Lbl_Btn_Nuevo);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 128, 0));
+		panel.setForeground(new Color(255, 255, 255));
+		panel.setBounds(374, 580, 116, 33);
+		Panel_Main_Clientes.add(panel);
+		
+		JButton btnGuardar = new JButton("Regitrar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!"".equals(Txt_DNI_RUC .getText()) || !"".equals(Txt_Nombre.getText()) 
+						|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())
+			            || !"".equals(Txt_RazonSocial.getText())){
+					
+							cl.setDni(Integer.parseInt(Txt_DNI_RUC.getText()));
+							cl.setNombre(Txt_Nombre.getText());
+							cl.setTelefono(Txt_Telefono.getText());
+							cl.setDireccion(Txt_Direccion.getText());
+							cl.setRazon(Txt_RazonSocial.getText());
+							Nclientes.InyeccionFormulario(cl);
+							JOptionPane.showMessageDialog(null,"Cliente registrado satisfactoriamente.");
+							
+						}else {
+							JOptionPane.showMessageDialog(null,"Asegurese de llenar todos los campos.");
+						}
+			}  
+			
+		});
+		panel.add(btnGuardar);
 
 	}
 }

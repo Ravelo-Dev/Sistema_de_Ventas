@@ -168,8 +168,7 @@ public class Login extends JFrame {
 			 USER = Ob_User_Log.log(Nombre, Pass);
 			 if (USER.getNombre() != null && USER.getPass() != null) {
 				Sys.main(null);
-				dispose(); 
-				 
+				dispose(); 		 
 				 
 			 }
 			 
