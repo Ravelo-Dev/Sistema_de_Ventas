@@ -26,6 +26,10 @@ import java.util.ArrayList;
 
 public class Form_Clientes extends JInternalFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Clientes cl = new Clientes();
 	ClientesBD NClientes = new ClientesBD();
 	DefaultTableModel Modelo = new DefaultTableModel();
@@ -92,7 +96,7 @@ public class Form_Clientes extends JInternalFrame {
 
 	public Form_Clientes() {
 		setClosable(true);
-		setBounds(100, 100, 950, 682);
+		setBounds(100, 100, 905, 665);
 		getContentPane().setLayout(null);
 
 		JPanel Panel_Main_Clientes = new JPanel();
@@ -231,7 +235,7 @@ public class Form_Clientes extends JInternalFrame {
 
 		JPanel Panel_LateralClientes = new JPanel();
 		Panel_LateralClientes.setBackground(new Color(252, 172, 66));
-		Panel_LateralClientes.setBounds(0, 0, 317, 652);
+		Panel_LateralClientes.setBounds(0, 0, 350, 652);
 		Panel_Main_Clientes.add(Panel_LateralClientes);
 
 		JPanel Btn_Actualizar = new JPanel();
