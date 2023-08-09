@@ -100,6 +100,8 @@ public class Sistema {
 		mniGestionProveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Proveedores proveedores = new Form_Proveedores();
+				proveedores.CleanTable();
+				proveedores.Listar_Proveedores();
 				dpnEscritorio.add(proveedores);
 				proveedores.show();
 			}
