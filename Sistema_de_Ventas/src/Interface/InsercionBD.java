@@ -1,15 +1,17 @@
-package Interface;
-
-import Mod_Consultas.Cliente;
-
-public interface InsercionBD {
-	
-	public boolean InyeccionFormulario( String clase);
-
-	boolean InyeccionFormulario(Cliente cl);
-
-	
-	
-	
-
-}
+/*
+ * package Interface;
+ * 
+ * import Mod_Consultas.Clientes;
+ * 
+ * public interface InsercionBD {
+ * 
+ * public boolean Registrar_Clientes(String clase);
+ * 
+ * boolean Registrar_Clientes(Clientes cl);
+ * 
+ * 
+ * 
+ * 
+ * 
+ * }
+ */

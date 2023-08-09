@@ -5,12 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 //import javax.swing.JPanel;
 
-import GUI_InterForm.Form_Clientes;
-import GUI_InterForm.Form_Config;
-import GUI_InterForm.Form_NuevaVenta;
-import GUI_InterForm.Form_Productos;
-import GUI_InterForm.Form_Proveedores;
-import GUI_InterForm.Form_Ventas;
+import GUI_InterForm.*;
+
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
@@ -21,6 +17,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import Config.*;
 
 public class Sistema {
 
@@ -85,10 +83,11 @@ public class Sistema {
 		mniGestionClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Clientes clientes = new Form_Clientes();
+				clientes.CleanTable();
+				clientes.Listar_Clientes();
 				dpnEscritorio.add(clientes);
 				clientes.show();
-				
-				
+	
 				
 			}
 		});

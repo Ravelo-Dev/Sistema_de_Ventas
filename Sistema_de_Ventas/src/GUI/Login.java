@@ -86,6 +86,7 @@ public class Login extends JFrame {
 		Panel_main_login.add(Lbl_Usuario);
 		
 		Txt_Usuario = new JTextField();
+		Txt_Usuario.setFont(new Font("Roboto Light", Font.PLAIN, 16));
 		Txt_Usuario.setBorder(null);
 		Txt_Usuario.setBounds(44, 276, 410, 36);
 		Panel_main_login.add(Txt_Usuario);
@@ -97,6 +98,7 @@ public class Login extends JFrame {
 		Panel_main_login.add(Lbl_Password);
 		
 		Txt_Password = new JPasswordField();
+		Txt_Password.setFont(new Font("Roboto Light", Font.PLAIN, 16));
 		Txt_Password.setBorder(null);
 		Txt_Password.setBounds(44, 368, 410, 36);
 		Panel_main_login.add(Txt_Password);
