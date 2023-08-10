@@ -114,4 +114,27 @@ public class ProductosBD {
 			return false;
 		}
 	}
+	
+	/*public Productos Buscar_Producto(String codigo) {
+		Productos productos = new Productos();
+		String sql = "SELECT * FROM productos WHERE codigo = ?";
+		try {
+			con = co.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, codigo);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				productos.setNombre(rs.getString("Nombre"));
+				productos.setPrecio(rs.getDouble("precio"));
+				productos.setStock(rs.getInt("Stock"));
+			}
+		}catch(Exception e) {
+			
+			System.out.println(e.toString());
+		}
+		return productos;
+	}*/
 }
+
+

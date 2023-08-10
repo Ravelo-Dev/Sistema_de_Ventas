@@ -13,14 +13,21 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Form_NuevaVenta extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField Txt_Codigo;
 	private JTextField Txt_Descripcion;
 	private JTextField Txt_Cantidad;
 	private JTextField Txt_Precio;
 	private JTextField Txt_Disponible;
-	private JTable Tabla_NVenta;
+	private DefaultTableModel Tabla_NVenta;
 	private JTextField Txt_DNI_RUC;
 	private JTextField Txt_Nombre;
 
@@ -98,6 +105,38 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Panel_Main_NVenta.add(Lbl_Cantidad);
 		
 		Txt_Cantidad = new JTextField();
+		Txt_Cantidad.addKeyListener(new KeyAdapter() {
+			private Object modelo;
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if(!"".equals(Txt_Cantidad.getText())) {
+						String codigo = Txt_Codigo.getText();
+						String descripcion = Txt_Descripcion.getText();
+						int Cantidad = Integer.parseInt(Txt_Precio.getText());
+						double precio = Double.parseDouble(Txt_Precio.getText());
+						double total = Cantidad * precio;
+						int Stock = Integer.parseInt(Txt_Disponible.getText());
+						if(Stock >= Cantidad) {
+							int item = item + 1;
+							modelo = Tabla_NVenta.getTableModelListeners();
+							ArrayList lista = new ArrayList();
+							lista.add(item);
+							lista.add(codigo);
+							lista.add(descripcion);
+							lista.add(Cantidad);
+							lista.add(precio);
+							lista.add(total);
+							ñ
+							Object[] TotalList = new Object[5];
+							♫
+							
+						}
+					}
+				}
+			}
+		});
 		Txt_Cantidad.setFont(new Font("Roboto Light", Font.PLAIN, 14));
 		Txt_Cantidad.setColumns(10);
 		Txt_Cantidad.setBorder(null);
@@ -246,3 +285,4 @@ public class Form_NuevaVenta extends JInternalFrame {
 
 	}
 }
+
