@@ -19,9 +19,6 @@ public class ClientesBD {
 	PreparedStatement ps;
 	ResultSet rs;
 
-	
-
-
 	public boolean Registrar_Clientes(Clientes cl) {
 		String sql = "INSERT INTO clientes (DNI, Nombre, Telefono, Direccion, Razon) VALUES (?, ?, ?, ?, ?)";
 

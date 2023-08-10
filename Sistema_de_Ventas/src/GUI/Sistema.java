@@ -55,6 +55,7 @@ public class Sistema {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1100, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		
 		JDesktopPane dpnEscritorio = new JDesktopPane();
 		frame.getContentPane().add(dpnEscritorio, BorderLayout.CENTER);
