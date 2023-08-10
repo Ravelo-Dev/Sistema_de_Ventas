@@ -25,6 +25,10 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 public class Form_Productos extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Productos prd = new Productos();
 	ProductosBD NProductos = new ProductosBD();
 	DefaultTableModel Modelo = new DefaultTableModel();

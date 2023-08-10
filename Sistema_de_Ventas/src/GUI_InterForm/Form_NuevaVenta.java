@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
@@ -13,9 +15,15 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import Config.ProductosBD;
+import Mod_Consultas.Productos;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
 
 public class Form_NuevaVenta extends JInternalFrame {
 	/**
@@ -27,10 +35,17 @@ public class Form_NuevaVenta extends JInternalFrame {
 	private JTextField Txt_Cantidad;
 	private JTextField Txt_Precio;
 	private JTextField Txt_Disponible;
-	private DefaultTableModel Tabla_NVenta;
+	private JTable Tabla_NVenta;
 	private JTextField Txt_DNI_RUC;
 	private JTextField Txt_Nombre;
-
+	private int item;
+	private ArrayList lista;
+   
+    
+    ProductosBD proBD = new ProductosBD();
+    Productos prod = new Productos();
+    
+    DefaultTableModel modelo = new DefaultTableModel();
 	/**
 	 * Launch the application.
 	 */
@@ -67,6 +82,34 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Panel_Main_NVenta.add(Lbl_Codigo);
 		
 		Txt_Codigo = new JTextField();
+		Txt_Codigo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if(!"".equals(Txt_Codigo.getText())) {
+						String codigo = Txt_Codigo.getText();
+						prod = proBD.Buscar_Producto(codigo);
+						
+						if(prod.getNombre() != null) {
+							Txt_Descripcion.setText(""+prod.getNombre());
+							Txt_Precio.setText(""+prod.getPrecio());
+							Txt_Disponible.setText(""+prod.getStock());
+							Txt_Cantidad.requestFocus();
+						}else {
+							Txt_Descripcion.setText("");
+							Txt_Precio.setText("");
+							Txt_Disponible.setText("");
+							Txt_Codigo.requestFocus();
+						}
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
+							Txt_Codigo.requestFocus();
+						}
+					}
+				}
+			
+		});
 		Txt_Codigo.setFont(new Font("Roboto Light", Font.PLAIN, 14));
 		Txt_Codigo.setColumns(10);
 		Txt_Codigo.setBorder(null);
@@ -106,35 +149,46 @@ public class Form_NuevaVenta extends JInternalFrame {
 		
 		Txt_Cantidad = new JTextField();
 		Txt_Cantidad.addKeyListener(new KeyAdapter() {
-			private Object modelo;
+			private TableModel modelo;
 
 			@Override
 			public void keyPressed(KeyEvent e) {
+				
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-					if(!"".equals(Txt_Cantidad.getText())) {
+					
+					if(!"".equals(Txt_Cantidad.getText())){
 						String codigo = Txt_Codigo.getText();
 						String descripcion = Txt_Descripcion.getText();
-						int Cantidad = Integer.parseInt(Txt_Precio.getText());
+						int cantidad = Integer.parseInt(Txt_Cantidad.getText());
 						double precio = Double.parseDouble(Txt_Precio.getText());
-						double total = Cantidad * precio;
-						int Stock = Integer.parseInt(Txt_Disponible.getText());
-						if(Stock >= Cantidad) {
-							int item = item + 1;
-							modelo = Tabla_NVenta.getTableModelListeners();
+						double total = cantidad * precio;
+						int stock = Integer.parseInt(Txt_Disponible.getText());
+						if(stock >= cantidad) {
+							item+=1;
+							modelo = (DefaultTableModel) Tabla_NVenta.getModel();
 							ArrayList lista = new ArrayList();
 							lista.add(item);
 							lista.add(codigo);
 							lista.add(descripcion);
-							lista.add(Cantidad);
+							lista.add(cantidad);
 							lista.add(precio);
 							lista.add(total);
-							ñ
-							Object[] TotalList = new Object[5];
-							♫
 							
+							Object[] O =  new Object[5];
+							O[0] = lista.get(1);
+							O[1] = lista.get(2);
+							O[2] = lista.get(3);
+							O[3] = lista.get(4);
+							O[4] = lista.get(5);
+							((DefaultTableModel) modelo).addRow(O);
+							Tabla_NVenta.setModel(modelo);
+						}else {
+							JOptionPane.showMessageDialog(null,"Cantidad stock no disponible");
+							}
+						}else {
+							JOptionPane.showMessageDialog(null,"Ingrese la cantidad");
 						}
 					}
-				}
 			}
 		});
 		Txt_Cantidad.setFont(new Font("Roboto Light", Font.PLAIN, 14));

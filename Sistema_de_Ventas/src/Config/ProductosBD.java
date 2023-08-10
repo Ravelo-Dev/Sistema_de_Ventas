@@ -115,7 +115,7 @@ public class ProductosBD {
 		}
 	}
 	
-	/*public Productos Buscar_Producto(String codigo) {
+	public Productos Buscar_Producto(String codigo) {
 		Productos productos = new Productos();
 		String sql = "SELECT * FROM productos WHERE codigo = ?";
 		try {
@@ -134,7 +134,7 @@ public class ProductosBD {
 			System.out.println(e.toString());
 		}
 		return productos;
-	}*/
+	}
 }
 
 
