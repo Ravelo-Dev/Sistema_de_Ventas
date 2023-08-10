@@ -115,6 +115,8 @@ public class Sistema {
 		mni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Productos GestionProductos = new Form_Productos();
+				GestionProductos.CleanTable();
+				GestionProductos.Listar_Productos();
 				dpnEscritorio.add(GestionProductos);
 				GestionProductos.show();
 			}
