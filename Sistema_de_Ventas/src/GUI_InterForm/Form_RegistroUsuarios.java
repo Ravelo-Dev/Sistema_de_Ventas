@@ -1,4 +1,4 @@
-package GUI;
+package GUI_InterForm;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,11 +19,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Config.*;
+import Config.Conexion;
+import Config.RegistrarUserLogin;
+import GUI.Login;
 import Mod_Consultas.Usuarios;
 
-public class Regristro_Sys_Login extends JFrame {
+public class Form_RegistroUsuarios extends JInternalFrame {
 
+	/**
+	 * Launch the application.
+	 */
 	/**
 	 * 
 	 */
@@ -45,9 +51,9 @@ public class Regristro_Sys_Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Regristro_Sys_Login frame = new Regristro_Sys_Login();
+					Form_RegistroUsuarios frame = new Form_RegistroUsuarios ();
 					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					frame.setClosed(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +65,12 @@ public class Regristro_Sys_Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Regristro_Sys_Login() {
+	public Form_RegistroUsuarios() {
+		setTitle("Registro - Nuevos Usuarios");
+		setEnabled(false);
+		setResizable(true);
+		
+		setClosable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 650);
 		contentPane = new JPanel();
@@ -183,3 +194,5 @@ public class Regristro_Sys_Login extends JFrame {
 		Panel_main_login.add(separator_Correo);
 	}
 }
+
+

@@ -1,5 +1,6 @@
 package GUI;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -53,7 +54,7 @@ public class Sistema {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1100, 750);
+		frame.setBounds(100, 100, 1250, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
@@ -162,7 +163,20 @@ public class Sistema {
 			}
 		});
 		mnuConfiguracion.add(mniConfiguracion);
+		
+		JMenu mnuNuevosUsuarios = new JMenu("Nuevos Usuarios");
+		menuBar.add(mnuNuevosUsuarios);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Gestion Nuevos Usuarios");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Form_RegistroUsuarios NuevosUsuarios= new Form_RegistroUsuarios();
+				
+				dpnEscritorio.add(NuevosUsuarios);
+				NuevosUsuarios.show();
+			}
+			
+		});
+		mnuNuevosUsuarios.add(mntmNewMenuItem_1);
 	}
-
-	
 }
