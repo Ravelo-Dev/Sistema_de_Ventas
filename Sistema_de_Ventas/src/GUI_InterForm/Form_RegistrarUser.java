@@ -8,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,22 +16,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
 import Config.Conexion;
 import Config.RegistrarUserLogin;
 import GUI.Login;
 import Mod_Consultas.Usuarios;
 
-public class Form_RegistroUsuarios extends JInternalFrame {
-
-	/**
-	 * Launch the application.
-	 */
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Form_RegistrarUser extends JInternalFrame {
 	Usuarios USER = new Usuarios(); 
 	RegistrarUserLogin RUserLogin = new RegistrarUserLogin();
 	Conexion Cnxn = new Conexion();
@@ -40,10 +30,6 @@ public class Form_RegistroUsuarios extends JInternalFrame {
 	private JTextField Txt_Usuario;
 	private JPasswordField Txt_Password;
 	private JTextField Txt_Correo;
-
-	/**
-	 * Launch the application.
-	 */
 	/**
 	 * Launch the application.
 	 */
@@ -51,10 +37,9 @@ public class Form_RegistroUsuarios extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Form_RegistroUsuarios frame = new Form_RegistroUsuarios ();
+					Form_RegistrarUser frame = new Form_RegistrarUser();
 					frame.setVisible(true);
-					frame.setClosed(true);
-					frame.setResizable(false);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,25 +50,16 @@ public class Form_RegistroUsuarios extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Form_RegistroUsuarios() {
+	public Form_RegistrarUser() {
 		setTitle("Registro - Nuevos Usuarios");
-		setEnabled(false);
-		setResizable(true);
-		
 		setClosable(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 650);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		getContentPane().setLayout(null);
 		
 		JPanel Panel_main_login = new JPanel();
 		Panel_main_login.setBounds(0, 0, 505, 611);
-		contentPane.add(Panel_main_login);
+		getContentPane().add(Panel_main_login);
 		Panel_main_login.setLayout(null);
-		
 		JLabel Lbl_Resfistrarse = new JLabel("REGISTRATE");
 		Lbl_Resfistrarse.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_Resfistrarse.setLabelFor(this);
@@ -193,6 +169,5 @@ public class Form_RegistroUsuarios extends JInternalFrame {
 		separator_Correo.setBounds(44, 406, 410, 11);
 		Panel_main_login.add(separator_Correo);
 	}
+
 }
-
-

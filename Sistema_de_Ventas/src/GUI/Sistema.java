@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import Config.*;
+import javax.swing.BoxLayout;
 
 public class Sistema {
 
@@ -60,6 +61,7 @@ public class Sistema {
 		
 		JDesktopPane dpnEscritorio = new JDesktopPane();
 		frame.getContentPane().add(dpnEscritorio, BorderLayout.CENTER);
+		dpnEscritorio.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -170,7 +172,7 @@ public class Sistema {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Gestion Nuevos Usuarios");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Form_RegistroUsuarios NuevosUsuarios= new Form_RegistroUsuarios();
+				Form_RegistrarUser NuevosUsuarios= new Form_RegistrarUser();
 				
 				dpnEscritorio.add(NuevosUsuarios);
 				NuevosUsuarios.show();
