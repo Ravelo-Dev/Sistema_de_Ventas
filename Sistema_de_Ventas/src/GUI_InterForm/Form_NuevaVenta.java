@@ -40,6 +40,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 	private JTextField Txt_Nombre;
 	private int item;
 	private ArrayList lista;
+	private double TotalPagar = 0.00;
    
     
     ProductosBD proBD = new ProductosBD();
@@ -61,6 +62,8 @@ public class Form_NuevaVenta extends JInternalFrame {
 			}
 		});
 	}
+	
+	
 
 	/**
 	 * Create the frame.
@@ -166,7 +169,13 @@ public class Form_NuevaVenta extends JInternalFrame {
 						if(stock >= cantidad) {
 							item+=1;
 							modelo = (DefaultTableModel) Tabla_NVenta.getModel();
-							ArrayList lista = new ArrayList();
+							for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
+								if (Tabla_NVenta.getValueAt(i, 1).equals(Txt_Descripcion.getText())) {
+									JOptionPane.showMessageDialog(null,"El Producto ya esta registrado");
+									return;
+								}
+							}
+							lista = new ArrayList();
 							lista.add(item);
 							lista.add(codigo);
 							lista.add(descripcion);
@@ -337,6 +346,16 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Lbl_TituloMain.setBounds(378, 29, 265, 19);
 		Panel_Main_NVenta.add(Lbl_TituloMain);
 
+	}
+	
+	public void Total_A_Pagar() {
+		TotalPagar = 0.00;
+		int NumFila = Tabla_NVenta.getRowCount();
+		for  (int i = 0; i < NumFila; i++) {
+			double Cal = Double.parseDouble(String.valueOf(Tabla_NVenta.getModel().getValueAt(i, 4)));
+			TotalPagar  = TotalPagar + Cal;
+		}
+		//Lbl_TotalMonto.setText();
 	}
 }
 
