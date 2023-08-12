@@ -126,17 +126,16 @@ public class Form_RegistrarUser extends JInternalFrame {
 		/*ACCION AL HACER CLICK AQUI*/
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (!"".equals(Txt_Usuario.getText()) || !"".equals(Txt_Correo.getText()) || !"".equals(Txt_Password.getPassword().toString())) {
-					USER.setNombre(Txt_Usuario.getText());
-					USER.setCorreo(Txt_Correo.getText());
-					USER.setPass(Txt_Password.getPassword().toString());
-					RUserLogin.Registrar_Usuarios(USER);
-					JOptionPane.showMessageDialog(null, "Usuario Registrado Exitosamente!");
-					dispose();
-				}else {
-					JOptionPane.showMessageDialog(null, "Debe Completar los campos");
+				if (!"".equals(Txt_Usuario.getText()) || !"".equals(Txt_Correo.getText()) || Txt_Password.getPassword().length > 0) {
+				    USER.setNombre(Txt_Usuario.getText());
+				    USER.setCorreo(Txt_Correo.getText());
+				    USER.setPass(new String(Txt_Password.getPassword())); // Convierte el arreglo de caracteres a una cadena
+				    RUserLogin.Registrar_Usuarios(USER);
+				    JOptionPane.showMessageDialog(null, "Usuario Registrado Exitosamente!");
+				    dispose();
+				} else {
+				    JOptionPane.showMessageDialog(null, "Debe Completar los campos");
 				}
-				
 			}
 		});
 		Btn_Registrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
