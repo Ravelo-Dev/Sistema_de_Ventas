@@ -17,12 +17,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import Config.ProductosBD;
-import Mod_Consultas.Productos;
+import Config.*;
+import Mod_Consultas.*;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Form_NuevaVenta extends JInternalFrame {
@@ -38,6 +40,8 @@ public class Form_NuevaVenta extends JInternalFrame {
 	private JTable Tabla_NVenta;
 	private JTextField Txt_DNI_RUC;
 	private JTextField Txt_Nombre;
+	JLabel Lbl_Vendedor;
+	JLabel Lbl_TotalMonto;
 	private int item;
 	private ArrayList lista;
 	private double TotalPagar = 0.00;
@@ -45,6 +49,9 @@ public class Form_NuevaVenta extends JInternalFrame {
     
     ProductosBD proBD = new ProductosBD();
     Productos prod = new Productos();
+    Ventas V = new Ventas();
+    VentasBD VBD = new VentasBD();
+    
     
     DefaultTableModel modelo = new DefaultTableModel();
 	/**
@@ -314,6 +321,12 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Panel_Main_NVenta.add(separator_txtNombre);
 		
 		JPanel Btn_Imprimir = new JPanel();
+		Btn_Imprimir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RegistrarVenta();
+			}
+		});
 		Btn_Imprimir.setLayout(null);
 		Btn_Imprimir.setBackground(new Color(252, 172, 66));
 		Btn_Imprimir.setBounds(758, 547, 115, 33);
@@ -330,7 +343,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Lbl_Total.setBounds(381, 609, 124, 19);
 		Panel_Main_NVenta.add(Lbl_Total);
 		
-		JLabel Lbl_TotalMonto = new JLabel("- - - - ");
+		Lbl_TotalMonto = new JLabel("- - - - ");
 		Lbl_TotalMonto.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Lbl_TotalMonto.setBounds(515, 609, 70, 19);
 		Panel_Main_NVenta.add(Lbl_TotalMonto);
@@ -339,6 +352,11 @@ public class Form_NuevaVenta extends JInternalFrame {
 		PanelLateral_NVenta.setBackground(new Color(252, 176, 66));
 		PanelLateral_NVenta.setBounds(0, 0, 317, 652);
 		Panel_Main_NVenta.add(PanelLateral_NVenta);
+		
+		Lbl_Vendedor = new JLabel("Los Socios");
+		Lbl_Vendedor.setHorizontalAlignment(SwingConstants.CENTER);
+		Lbl_Vendedor.setFont(new Font("Roboto", Font.PLAIN, 16));
+		PanelLateral_NVenta.add(Lbl_Vendedor);
 		
 		JLabel Lbl_TituloMain = new JLabel("REGISTRA UNA NUEVA VENTA");
 		Lbl_TituloMain.setHorizontalAlignment(SwingConstants.CENTER);
@@ -355,7 +373,17 @@ public class Form_NuevaVenta extends JInternalFrame {
 			double Cal = Double.parseDouble(String.valueOf(Tabla_NVenta.getModel().getValueAt(i, 4)));
 			TotalPagar  = TotalPagar + Cal;
 		}
-		//Lbl_TotalMonto.setText();
+		Lbl_TotalMonto.setText(String.format("0.2f", TotalPagar));
+	}
+	
+	public void RegistrarVenta() {
+		String Cliente = Txt_Nombre.getText();
+		String Vendedor = Lbl_Vendedor.getText();
+		Double Monto = TotalPagar;
+		V.setCliente(Cliente);
+		V.setVendedor(Vendedor);
+		V.setTotal(Monto);
+		VBD.Registrar_Venta(V);
 	}
 }
 
