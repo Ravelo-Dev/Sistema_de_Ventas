@@ -88,7 +88,7 @@ public class Form_Productos extends JInternalFrame {
 		Txt_Descripcion.setText("");
 		CBox_Proveedores.setSelectedItem("");
 		Txt_Cantidad.setText("");
-		Txt_Precio.setText("");
+		//Txt_Precio.setText("");
 	}
 
 	/**
