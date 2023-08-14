@@ -115,25 +115,24 @@ public class ProductosBD {
 		}
 	}
 	
-	public Productos Buscar_Producto(String codigo) {
-		Productos productos = new Productos();
-		String sql = "SELECT * FROM productos WHERE codigo = ?";
+	public Productos Buscar_Producto(String Codigo) {
+		Productos producto = new Productos();
+		String sql = "SELECT * FROM productos WHERE Codigo = ?";
 		try {
 			con = co.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, codigo);
+			ps.setString(1, Codigo);
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				productos.setNombre(rs.getString("Nombre"));
-				productos.setPrecio(rs.getDouble("precio"));
-				productos.setStock(rs.getInt("Stock"));
+				producto.setNombre(rs.getString("Nombre"));
+				producto.setPrecio(rs.getDouble("Precio"));
+				producto.setStock(rs.getInt("Stock"));
 			}
 		}catch(Exception e) {
-			
 			System.out.println(e.toString());
 		}
-		return productos;
+		return producto;
 	}
 }
 

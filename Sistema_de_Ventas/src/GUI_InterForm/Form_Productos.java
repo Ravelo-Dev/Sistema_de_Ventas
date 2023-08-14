@@ -19,10 +19,13 @@ import javax.swing.table.DefaultTableModel;
 
 import Config.*;
 import Mod_Consultas.*;
+import Reportes.Excel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Form_Productos extends JInternalFrame {
 	/**
@@ -272,8 +275,7 @@ public class Form_Productos extends JInternalFrame {
 				} else {
 
 					if (!"".equals(Txt_Codigo.getText()) || !"".equals(Txt_Descripcion.getText())
-							|| !"".equals(CBox_Proveedores.getSelectedItem()) || !"".equals(Txt_Cantidad.getText())
-							|| !"".equals(Txt_Precio.getText())) {
+						 || !"".equals(Txt_Cantidad.getText()) || !"".equals(Txt_Precio.getText())) {
 						prd.setCodigo(Txt_Codigo.getText());
 						prd.setNombre(Txt_Descripcion.getText());
 						prd.setProveedor(CBox_Proveedores.getSelectedItem().toString());
@@ -281,9 +283,10 @@ public class Form_Productos extends JInternalFrame {
 						prd.setPrecio(Double.parseDouble(Txt_Cantidad.getText()));
 						prd.setId(Integer.parseInt(Txt_ID.getText()));
 						NProductos.Actualizar_Productos(prd);
+						JOptionPane.showMessageDialog(null, "Producto actualizado con exito!");
 						CleanTable();
-						CleanTEXTBOX();
 						Listar_Productos();
+						CleanTEXTBOX();
 					}
 				}
 			}
@@ -345,6 +348,12 @@ public class Form_Productos extends JInternalFrame {
 		Btn_Nuevo.add(Lbl_Btn_Nuevo);
 		
 		JPanel Btn_Excel = new JPanel();
+		Btn_Excel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Excel.reporte();
+			}
+		});
 		Btn_Excel.setLayout(null);
 		Btn_Excel.setBackground(new Color(252, 176, 66));
 		Btn_Excel.setBounds(374, 572, 115, 33);

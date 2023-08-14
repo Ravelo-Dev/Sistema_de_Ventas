@@ -42,9 +42,8 @@ public class Form_NuevaVenta extends JInternalFrame {
 	private JTextField Txt_Nombre;
 	JLabel Lbl_Vendedor;
 	JLabel Lbl_TotalMonto;
-	private int item;
-	private ArrayList lista;
-	private double TotalPagar = 0.00;
+	int item;
+	double TotalPagar = 0.00;
    
     
     ProductosBD proBD = new ProductosBD();
@@ -112,10 +111,10 @@ public class Form_NuevaVenta extends JInternalFrame {
 							Txt_Codigo.requestFocus();
 						}
 							
-						}else {
-							JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
-							Txt_Codigo.requestFocus();
-						}
+					}else {
+						JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
+						Txt_Codigo.requestFocus();
+					}
 					}
 				}
 			
@@ -159,7 +158,6 @@ public class Form_NuevaVenta extends JInternalFrame {
 		
 		Txt_Cantidad = new JTextField();
 		Txt_Cantidad.addKeyListener(new KeyAdapter() {
-			private TableModel modelo;
 
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -167,22 +165,26 @@ public class Form_NuevaVenta extends JInternalFrame {
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 					
 					if(!"".equals(Txt_Cantidad.getText())){
+						
 						String codigo = Txt_Codigo.getText();
 						String descripcion = Txt_Descripcion.getText();
 						int cantidad = Integer.parseInt(Txt_Cantidad.getText());
 						double precio = Double.parseDouble(Txt_Precio.getText());
 						double total = cantidad * precio;
 						int stock = Integer.parseInt(Txt_Disponible.getText());
-						if(stock >= cantidad) {
-							item+=1;
+						
+						if (stock >= cantidad) {
+							item = item + 1;
 							modelo = (DefaultTableModel) Tabla_NVenta.getModel();
+							
 							for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
+								
 								if (Tabla_NVenta.getValueAt(i, 1).equals(Txt_Descripcion.getText())) {
 									JOptionPane.showMessageDialog(null,"El Producto ya esta registrado");
 									return;
 								}
 							}
-							lista = new ArrayList();
+							ArrayList<Comparable> lista = new ArrayList<Comparable>();
 							lista.add(item);
 							lista.add(codigo);
 							lista.add(descripcion);
@@ -196,8 +198,9 @@ public class Form_NuevaVenta extends JInternalFrame {
 							O[2] = lista.get(3);
 							O[3] = lista.get(4);
 							O[4] = lista.get(5);
-							((DefaultTableModel) modelo).addRow(O);
+							modelo.addRow(O);
 							Tabla_NVenta.setModel(modelo);
+							Total_A_Pagar();
 						}else {
 							JOptionPane.showMessageDialog(null,"Cantidad stock no disponible");
 							}
@@ -369,11 +372,11 @@ public class Form_NuevaVenta extends JInternalFrame {
 	public void Total_A_Pagar() {
 		TotalPagar = 0.00;
 		int NumFila = Tabla_NVenta.getRowCount();
-		for  (int i = 0; i < NumFila; i++) {
+		for (int i = 0; i < NumFila; i++) {
 			double Cal = Double.parseDouble(String.valueOf(Tabla_NVenta.getModel().getValueAt(i, 4)));
 			TotalPagar  = TotalPagar + Cal;
 		}
-		Lbl_TotalMonto.setText(String.format("0.2f", TotalPagar));
+		Lbl_TotalMonto.setText(String.format("", TotalPagar));
 	}
 	
 	public void RegistrarVenta() {
@@ -384,6 +387,14 @@ public class Form_NuevaVenta extends JInternalFrame {
 		V.setVendedor(Vendedor);
 		V.setTotal(Monto);
 		VBD.Registrar_Venta(V);
+	}
+	
+	public void CleanTEXTBOX() {
+		Txt_Codigo.setText("");
+		Txt_Descripcion.setText("");
+		Txt_Cantidad.setText("");
+		Txt_Disponible.setText("");
+		Txt_Precio.setText("");
 	}
 }
 
