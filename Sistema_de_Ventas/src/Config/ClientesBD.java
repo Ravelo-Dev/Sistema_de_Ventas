@@ -101,5 +101,28 @@ public class ClientesBD {
 		}
 	}
 	
+	public Clientes  BuscarClientes(int dni) {
+		Clientes cl = new Clientes();
+		String sql = "SELECT * FROM clientes WHERE dni = ?";
+		try {
+			con = co.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, cl.getDni());
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				cl.setNombre(rs.getString("ombre"));
+				cl.setTelefono(rs.getString("Telefono"));
+				cl.setDireccion(rs.getString("Direccion"));
+				cl.setRazon(rs.getString("razon"));
+			}
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.toString());
+		}
+		return cl;
+	}
+
+	
+	
 }
 
