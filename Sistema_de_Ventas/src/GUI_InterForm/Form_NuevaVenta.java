@@ -25,12 +25,13 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
 
 public class Form_NuevaVenta extends JInternalFrame {
-	/**
-	 * 
-	 */
+	
+	 
 	private static final long serialVersionUID = 1L;
 	private JTextField Txt_Codigo;
 	private JTextField Txt_Descripcion;
@@ -52,8 +53,6 @@ public class Form_NuevaVenta extends JInternalFrame {
     VentasBD VBD = new VentasBD();
     Clientes cl = new Clientes();
     ClientesBD cliente = new ClientesBD();
-    
-    
     DefaultTableModel modelo = new DefaultTableModel();
 	/**
 	 * Launch the application.
@@ -272,6 +271,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 				Txt_Codigo.requestFocus();
 			}
 		});
+	
 		Btn_Eliminar.setLayout(null);
 		Btn_Eliminar.setBackground(new Color(252, 176, 66));
 		Btn_Eliminar.setBounds(378, 272, 115, 33);
@@ -322,7 +322,8 @@ public class Form_NuevaVenta extends JInternalFrame {
 				}
 
 
-			}
+			}			
+
 		});
 		Txt_DNI_RUC.setFont(new Font("Roboto Light", Font.PLAIN, 14));
 		Txt_DNI_RUC.setColumns(10);

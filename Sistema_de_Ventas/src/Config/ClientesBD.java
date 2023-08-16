@@ -103,7 +103,7 @@ public class ClientesBD {
 	
 	public Clientes  BuscarClientes(int dni) {
 		Clientes cl = new Clientes();
-		String sql = "SELECT * FROM clientes WHERE dni = ?";
+		String sql = "SELECT * FROM clientes WHERE Dni = ?";
 		try {
 			con = co.getConnection();
 			ps = con.prepareStatement(sql);
@@ -111,7 +111,7 @@ public class ClientesBD {
 			rs = ps.executeQuery();
 
 			if(rs.next()) {
-				cl.setNombre(rs.getString("ombre"));
+				cl.setNombre(rs.getString("Nombre"));
 				cl.setTelefono(rs.getString("Telefono"));
 				cl.setDireccion(rs.getString("Direccion"));
 				cl.setRazon(rs.getString("razon"));
