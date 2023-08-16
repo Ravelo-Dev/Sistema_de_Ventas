@@ -50,6 +50,8 @@ public class Form_NuevaVenta extends JInternalFrame {
     Productos prod = new Productos();
     Ventas V = new Ventas();
     VentasBD VBD = new VentasBD();
+    Clientes cl = new Clientes();
+    ClientesBD cliente = new ClientesBD();
     
     
     DefaultTableModel modelo = new DefaultTableModel();
@@ -261,6 +263,15 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Panel_Main_NVenta.add(separator_txtStockDisp);
 		
 		JPanel Btn_Eliminar = new JPanel();
+		Btn_Eliminar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				modelo = (DefaultTableModel) Tabla_NVenta.getModel();
+				modelo.removeRow(Tabla_NVenta.getSelectedRow());
+				Total_A_Pagar();
+				Txt_Codigo.requestFocus();
+			}
+		});
 		Btn_Eliminar.setLayout(null);
 		Btn_Eliminar.setBackground(new Color(252, 176, 66));
 		Btn_Eliminar.setBounds(378, 272, 115, 33);
@@ -293,6 +304,26 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Panel_Main_NVenta.add(Lbl_DNI_RUC);
 		
 		Txt_DNI_RUC = new JTextField();
+		Txt_DNI_RUC.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if(!"".equals(Txt_DNI_RUC.getText())) {
+						int dni = Integer.parseInt(Txt_DNI_RUC.getText());
+						cl = cliente.BuscarClientes(dni);
+						if(cl.getNombre() != null) {
+							Txt_Nombre.setText(""+cl.getNombre());
+
+
+						}else {
+							JOptionPane.showMessageDialog(null,"El cliente no existe.");
+						}
+					}
+				}
+
+
+			}
+		});
 		Txt_DNI_RUC.setFont(new Font("Roboto Light", Font.PLAIN, 14));
 		Txt_DNI_RUC.setColumns(10);
 		Txt_DNI_RUC.setBorder(null);
@@ -376,7 +407,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 			double Cal = Double.parseDouble(String.valueOf(Tabla_NVenta.getModel().getValueAt(i, 4)));
 			TotalPagar  = TotalPagar + Cal;
 		}
-		Lbl_TotalMonto.setText(String.format("", TotalPagar));
+		Lbl_TotalMonto.setText(String.format("0.2f", TotalPagar));
 	}
 	
 	public void RegistrarVenta() {
