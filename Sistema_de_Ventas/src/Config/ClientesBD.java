@@ -103,18 +103,15 @@ public class ClientesBD {
 	
 	public Clientes  BuscarClientes(int dni) {
 		Clientes cl = new Clientes();
-		String sql = "SELECT * FROM clientes WHERE Dni = ?";
+		String sql = "SELECT * FROM clientes WHERE DNI = ?";
 		try {
 			con = co.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, cl.getDni());
+			ps.setInt(1, dni);
 			rs = ps.executeQuery();
 
 			if(rs.next()) {
 				cl.setNombre(rs.getString("Nombre"));
-				cl.setTelefono(rs.getString("Telefono"));
-				cl.setDireccion(rs.getString("Direccion"));
-				cl.setRazon(rs.getString("razon"));
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.toString());

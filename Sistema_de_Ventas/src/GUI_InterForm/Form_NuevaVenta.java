@@ -51,6 +51,7 @@ public class Form_NuevaVenta extends JInternalFrame {
     Productos prod = new Productos();
     Ventas V = new Ventas();
     VentasBD VBD = new VentasBD();
+    Detalles DT = new Detalles();
     Clientes cl = new Clientes();
     ClientesBD cliente = new ClientesBD();
     DefaultTableModel modelo = new DefaultTableModel();
@@ -99,16 +100,13 @@ public class Form_NuevaVenta extends JInternalFrame {
 					if(!"".equals(Txt_Codigo.getText())) {
 						String codigo = Txt_Codigo.getText();
 						prod = proBD.Buscar_Producto(codigo);
-						
 						if(prod.getNombre() != null) {
-							Txt_Descripcion.setText(""+prod.getNombre());
-							Txt_Precio.setText(""+prod.getPrecio());
-							Txt_Disponible.setText(""+prod.getStock());
+							Txt_Descripcion.setText("" + prod.getNombre());
+							Txt_Precio.setText("" + prod.getPrecio());
+							Txt_Disponible.setText("" + prod.getStock());
 							Txt_Cantidad.requestFocus();
 						}else {
-							Txt_Descripcion.setText("");
-							Txt_Precio.setText("");
-							Txt_Disponible.setText("");
+							CleanTEXTBOX();
 							Txt_Codigo.requestFocus();
 						}
 							
@@ -116,8 +114,8 @@ public class Form_NuevaVenta extends JInternalFrame {
 						JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
 						Txt_Codigo.requestFocus();
 					}
-					}
 				}
+			}
 			
 		});
 		Txt_Codigo.setFont(new Font("Roboto Light", Font.PLAIN, 14));
@@ -164,9 +162,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 			public void keyPressed(KeyEvent e) {
 				
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-					
 					if(!"".equals(Txt_Cantidad.getText())){
-						
 						String codigo = Txt_Codigo.getText();
 						String descripcion = Txt_Descripcion.getText();
 						int cantidad = Integer.parseInt(Txt_Cantidad.getText());
@@ -185,7 +181,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 									return;
 								}
 							}
-							ArrayList<Comparable> lista = new ArrayList<Comparable>();
+							ArrayList lista = new ArrayList();
 							lista.add(item);
 							lista.add(codigo);
 							lista.add(descripcion);
@@ -202,13 +198,15 @@ public class Form_NuevaVenta extends JInternalFrame {
 							modelo.addRow(O);
 							Tabla_NVenta.setModel(modelo);
 							Total_A_Pagar();
+							CleanTEXTBOX();
+							Txt_Codigo.requestFocus();
 						}else {
 							JOptionPane.showMessageDialog(null,"Cantidad stock no disponible");
-							}
-						}else {
-							JOptionPane.showMessageDialog(null,"Ingrese la cantidad");
 						}
+					}else {
+						JOptionPane.showMessageDialog(null,"Ingrese la cantidad");
 					}
+				}
 			}
 		});
 		Txt_Cantidad.setFont(new Font("Roboto Light", Font.PLAIN, 14));
@@ -312,15 +310,14 @@ public class Form_NuevaVenta extends JInternalFrame {
 						int dni = Integer.parseInt(Txt_DNI_RUC.getText());
 						cl = cliente.BuscarClientes(dni);
 						if(cl.getNombre() != null) {
-							Txt_Nombre.setText(""+cl.getNombre());
-
+							Txt_Nombre.setText("" + cl.getNombre());
 
 						}else {
+							Txt_DNI_RUC.setText("");
 							JOptionPane.showMessageDialog(null,"El cliente no existe.");
 						}
 					}
 				}
-
 
 			}			
 
@@ -360,6 +357,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				RegistrarVenta();
+				RegistrarDetalle();
 			}
 		});
 		Btn_Imprimir.setLayout(null);
@@ -408,7 +406,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 			double Cal = Double.parseDouble(String.valueOf(Tabla_NVenta.getModel().getValueAt(i, 4)));
 			TotalPagar  = TotalPagar + Cal;
 		}
-		Lbl_TotalMonto.setText(String.format("0.2f", TotalPagar));
+		Lbl_TotalMonto.setText(String.format("%.2f", TotalPagar));
 	}
 	
 	public void RegistrarVenta() {
@@ -419,6 +417,21 @@ public class Form_NuevaVenta extends JInternalFrame {
 		V.setVendedor(Vendedor);
 		V.setTotal(Monto);
 		VBD.Registrar_Venta(V);
+	}
+	
+	public void RegistrarDetalle() {
+		for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
+			String codigo =  Tabla_NVenta.getValueAt(i, 0).toString();
+			int cantidad = Integer.parseInt(Tabla_NVenta.getValueAt(i, 2).toString());
+			double precio = Double.parseDouble(Tabla_NVenta.getValueAt(i, 3).toString());
+			int id_venta = 1;
+			DT.setCod_Producto(codigo);
+			DT.setCantidad(cantidad);
+			DT.setPrecio(precio);
+			DT.setId_Venta(id_venta);
+			VBD.Registrar_Detalle(DT);
+			
+		}
 	}
 	
 	public void CleanTEXTBOX() {
