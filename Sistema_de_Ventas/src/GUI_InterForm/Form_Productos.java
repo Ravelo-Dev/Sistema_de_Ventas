@@ -27,6 +27,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class Form_Productos extends JInternalFrame implements Operaciones_Productos{
 	/**
@@ -269,7 +270,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		JLabel Lbl_Btn_Actualizar = new JLabel("ACTUALIZAR");
 		Lbl_Btn_Actualizar.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_Btn_Actualizar.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_Actualizar.setBounds(10, 0, 95, 33);
+		Lbl_Btn_Actualizar.setBounds(0, 0, 115, 33);
 		Btn_Actualizar.add(Lbl_Btn_Actualizar);
 		
 		JPanel Btn_Eliminar = new JPanel();
@@ -320,13 +321,20 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		JPanel PanelLateral_Productos = new JPanel();
 		PanelLateral_Productos.setBackground(new Color(252, 176, 66));
-		PanelLateral_Productos.setBounds(0, 0, 317, 652);
+		PanelLateral_Productos.setBounds(0, 0, 345, 652);
 		Panel_Main_Productos.add(PanelLateral_Productos);
+		PanelLateral_Productos.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(Form_Productos.class.getResource("/Img/LosSocios_Design_FormProductos (1).png")));
+		lblNewLabel.setBounds(0, 0, 345, 652);
+		PanelLateral_Productos.add(lblNewLabel);
 		
 		JLabel Lbl_TituloMain = new JLabel("REGISTRA LOS PRODUCTOS");
 		Lbl_TituloMain.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_TituloMain.setFont(new Font("Roboto Black", Font.PLAIN, 18));
-		Lbl_TituloMain.setBounds(374, 30, 247, 19);
+		Lbl_TituloMain.setBounds(374, 30, 273, 19);
 		Panel_Main_Productos.add(Lbl_TituloMain);
 		
 		

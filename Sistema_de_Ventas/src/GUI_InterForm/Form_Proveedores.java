@@ -24,6 +24,7 @@ import Interface.Operaciones_Proveedores;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class Form_Proveedores extends JInternalFrame implements Operaciones_Proveedores{
 	/**
@@ -77,11 +78,18 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		PanelLateral_Proveedores.setBackground(new Color(252, 176, 66));
 		PanelLateral_Proveedores.setBounds(0, 0, 317, 652);
 		Panel_Main_Proveedores.add(PanelLateral_Proveedores);
+		PanelLateral_Proveedores.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(Form_Proveedores.class.getResource("/Img/LosSocios_Design_FormProveedores (1).png")));
+		lblNewLabel.setBounds(0, 0, 317, 652);
+		PanelLateral_Proveedores.add(lblNewLabel);
 
 		JLabel Lbl_TituloMain = new JLabel("PROVEEDORES");
 		Lbl_TituloMain.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_TituloMain.setFont(new Font("Roboto Black", Font.PLAIN, 18));
-		Lbl_TituloMain.setBounds(378, 42, 125, 19);
+		Lbl_TituloMain.setBounds(378, 42, 155, 19);
 		Panel_Main_Proveedores.add(Lbl_TituloMain);
 		
 		Txt_ID = new JTextField();
