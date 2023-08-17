@@ -44,6 +44,7 @@ import Mod_Consultas.Clientes;
 import Mod_Consultas.Detalles;
 import Mod_Consultas.Productos;
 import Mod_Consultas.Ventas;
+import javax.swing.ImageIcon;
 
 
 public class Form_NuevaVenta extends JInternalFrame implements Operaciones_NuevaVenta{
@@ -291,13 +292,14 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 	
 		Btn_Eliminar.setLayout(null);
 		Btn_Eliminar.setBackground(new Color(252, 176, 66));
-		Btn_Eliminar.setBounds(378, 272, 115, 33);
+		Btn_Eliminar.setBounds(384, 273, 84, 52);
 		Panel_Main_NVenta.add(Btn_Eliminar);
 		
 		JLabel Lbl_Btn_Eliminar = new JLabel("ELIMINAR");
+		Lbl_Btn_Eliminar.setIcon(new ImageIcon("C:\\Users\\maycol\\Downloads\\close.png"));
 		Lbl_Btn_Eliminar.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_Btn_Eliminar.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_Eliminar.setBounds(10, 0, 95, 33);
+		Lbl_Btn_Eliminar.setBounds(10, 0, 64, 48);
 		Btn_Eliminar.add(Lbl_Btn_Eliminar);
 		
 		JScrollPane scrollPane_NVenta = new JScrollPane();
@@ -407,10 +409,13 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JPanel PanelLateral_NVenta = new JPanel();
 		PanelLateral_NVenta.setBackground(new Color(252, 176, 66));
-		PanelLateral_NVenta.setBounds(0, 0, 317, 652);
+		PanelLateral_NVenta.setBounds(0, 0, 368, 652);
 		Panel_Main_NVenta.add(PanelLateral_NVenta);
+		PanelLateral_NVenta.setLayout(null);
 		
 		Lbl_Vendedor = new JLabel("Los Socios");
+		Lbl_Vendedor.setIcon(new ImageIcon(Form_NuevaVenta.class.getResource("/Img/LosSocios_Design_FormNuevaVentas.png")));
+		Lbl_Vendedor.setBounds(0, 0, 368, 652);
 		Lbl_Vendedor.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_Vendedor.setFont(new Font("Roboto", Font.PLAIN, 16));
 		PanelLateral_NVenta.add(Lbl_Vendedor);
