@@ -2,6 +2,7 @@ package Config;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Mod_Consultas.Detalles;
@@ -12,6 +13,7 @@ public class VentasBD {
 	Connection con;
 	Conexion co = new Conexion();
 	PreparedStatement ps;
+	ResultSet rs;
 	int R;
 	
 	public int Registrar_Venta(Ventas v) {
@@ -42,9 +44,43 @@ public class VentasBD {
 			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		return R;
+	}
+	
+	public int ID_Venta() {
+		int Id = 0;
+		String sql = "SELECT MAX(Id) FROM ventas";
+		try {
+			con = co.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				Id = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+		}
+		return Id;
+		
+	}
+	
+	public boolean Actualizar_STOCK(int Cantidad, String Codigo) {
+		String sql = "UPDATE productos SET Stock = ? WHERE Codigo = ?";
+		try {
+			con = co.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, Cantidad);
+			ps.setString(2, Codigo);
+			ps.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+			return false;
+		}
 	}
 	
 }

@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Config.*;
 import Mod_Consultas.*;
-import Reportes.Excel;
+
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -351,7 +351,7 @@ public class Form_Productos extends JInternalFrame {
 		Btn_Excel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Excel.reporte();
+				
 			}
 		});
 		Btn_Excel.setLayout(null);

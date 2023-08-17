@@ -1,32 +1,48 @@
 package GUI_InterForm;
 
-import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JSeparator;
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
-import Config.*;
-import Mod_Consultas.*;
-
+import java.awt.Desktop;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.event.AncestorListener;
-import javax.swing.event.AncestorEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfPCell;
+
+import Config.ClientesBD;
+import Config.ProductosBD;
+import Config.VentasBD;
+import Mod_Consultas.Clientes;
+import Mod_Consultas.Detalles;
+import Mod_Consultas.Productos;
+import Mod_Consultas.Ventas;
 
 
 public class Form_NuevaVenta extends JInternalFrame {
@@ -55,6 +71,7 @@ public class Form_NuevaVenta extends JInternalFrame {
     Clientes cl = new Clientes();
     ClientesBD cliente = new ClientesBD();
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel TMP = new DefaultTableModel();
 	/**
 	 * Launch the application.
 	 */
@@ -76,6 +93,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
+	
 	public Form_NuevaVenta() {
 		setClosable(true);
 		setBounds(100, 100, 950, 682);
@@ -172,7 +190,7 @@ public class Form_NuevaVenta extends JInternalFrame {
 						
 						if (stock >= cantidad) {
 							item = item + 1;
-							modelo = (DefaultTableModel) Tabla_NVenta.getModel();
+							TMP = (DefaultTableModel) Tabla_NVenta.getModel();
 							
 							for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
 								
@@ -195,8 +213,8 @@ public class Form_NuevaVenta extends JInternalFrame {
 							O[2] = lista.get(3);
 							O[3] = lista.get(4);
 							O[4] = lista.get(5);
-							modelo.addRow(O);
-							Tabla_NVenta.setModel(modelo);
+							TMP.addRow(O);
+							Tabla_NVenta.setModel(TMP);
 							Total_A_Pagar();
 							CleanTEXTBOX();
 							Txt_Codigo.requestFocus();
@@ -358,6 +376,11 @@ public class Form_NuevaVenta extends JInternalFrame {
 			public void mouseClicked(MouseEvent e) {
 				RegistrarVenta();
 				RegistrarDetalle();
+				ActualizarStock();
+				PDF();
+				CleanTable();
+				Txt_DNI_RUC.setText("");
+				Txt_Nombre.setText("");
 			}
 		});
 		Btn_Imprimir.setLayout(null);
@@ -420,17 +443,27 @@ public class Form_NuevaVenta extends JInternalFrame {
 	}
 	
 	public void RegistrarDetalle() {
+		int Id = VBD.ID_Venta();
 		for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
 			String codigo =  Tabla_NVenta.getValueAt(i, 0).toString();
 			int cantidad = Integer.parseInt(Tabla_NVenta.getValueAt(i, 2).toString());
 			double precio = Double.parseDouble(Tabla_NVenta.getValueAt(i, 3).toString());
-			int id_venta = 1;
 			DT.setCod_Producto(codigo);
 			DT.setCantidad(cantidad);
 			DT.setPrecio(precio);
-			DT.setId_Venta(id_venta);
+			DT.setId_Venta(Id);
 			VBD.Registrar_Detalle(DT);
 			
+		}
+	}
+	
+	public void ActualizarStock() {
+		for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
+			String codigo =  Tabla_NVenta.getValueAt(i, 0).toString();
+			int cantidad = Integer.parseInt(Tabla_NVenta.getValueAt(i, 2).toString());
+			prod = proBD.Buscar_Producto(codigo);
+			int StockActual = prod.getStock() - cantidad;
+			VBD.Actualizar_STOCK(StockActual, codigo);
 		}
 	}
 	
@@ -440,6 +473,145 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Txt_Cantidad.setText("");
 		Txt_Disponible.setText("");
 		Txt_Precio.setText("");
+	}
+	
+	public void CleanTable() {
+		TMP = (DefaultTableModel) Tabla_NVenta.getModel();
+		int Fila = Tabla_NVenta.getRowCount();
+		for (int i = 0; i < Fila; i++) {
+			TMP.removeRow(0);
+		}
+	}
+	
+	public void PDF() {
+		try {
+			FileOutputStream Archivo;
+			File file = new File("src/PDF/Venta.pdf");
+			Archivo = new FileOutputStream(file);
+			Document Doc = new Document();
+			PdfWriter.getInstance(Doc, Archivo);
+			Doc.open();
+			
+			Image img = Image.getInstance("src/Img/carrito-de-compras.png");
+			
+			Paragraph fecha = new Paragraph();
+			Font negrita = new Font(Font.SANS_SERIF, 12, Font.BOLD);
+			fecha.add(Chunk.NEWLINE);
+			Date dt = new Date();
+			fecha.add("Factura: 1\n" + "Fecha: " + new SimpleDateFormat("dd-MM-yyyy").format(dt) + "\n\n");
+			
+			PdfPTable Encabezado = new PdfPTable(4);
+			Encabezado.setWidthPercentage(100);
+			Encabezado.getDefaultCell().setBorder(0);
+			float[] ColumnaEncabezado = new float[] {20f, 30f, 70f, 40f};
+			Encabezado.setWidths(ColumnaEncabezado);
+			Encabezado.setHorizontalAlignment(Element.ALIGN_LEFT);
+			
+			img.scaleToFit(50f, 50f);
+			Encabezado.addCell(img);
+			
+
+			String RNC = "8162023";
+			String Nom = "LOS SOCIOS BOUTIQUE";
+			String Tel = "829-792-9978";
+			String Dir = "Santo Domingo, RD";
+			
+			Encabezado.addCell("");
+			Encabezado.addCell("RNC: " + RNC + "\nNombre: " + Nom + "\nTelefono: " + Tel + "\nDireccion: " + Dir);
+			Encabezado.addCell(fecha);
+			Doc.add(Encabezado);
+			
+			Paragraph cliente = new Paragraph();
+			cliente.add(Chunk.NEWLINE);
+			cliente.add("DATOS CLIENTE" + "\n\n");
+			Doc.add(cliente);
+			
+			PdfPTable TablaCliente = new PdfPTable(2);
+			TablaCliente.setWidthPercentage(100);
+			TablaCliente.getDefaultCell().setBorder(0);
+			float[] ColumnaCliente = new float[] {20f, 50f};
+			TablaCliente.setWidths(ColumnaCliente);
+			TablaCliente.setHorizontalAlignment(Element.ALIGN_LEFT);
+			
+			PdfPCell cli1 = new PdfPCell(new Phrase("DNI/RNC"));
+			PdfPCell cli2 = new PdfPCell(new Phrase("Nombre"));
+
+			cli1.setBorder(0);
+			cli2.setBorder(0);
+	
+			TablaCliente.addCell(cli1);
+			TablaCliente.addCell(cli2);
+			
+			TablaCliente.addCell(Txt_DNI_RUC.getText());
+			TablaCliente.addCell(Txt_Nombre.getText());
+			
+			Doc.add(TablaCliente);
+			
+			//PRODUCTOS
+			
+			Paragraph product = new Paragraph();
+			product.add(Chunk.NEWLINE);
+			product.add("\nDATOS DE LA COMPRA" + "\n\n");
+			Doc.add(product);
+			
+			PdfPTable TablaProduct = new PdfPTable(4);
+			TablaProduct.setWidthPercentage(100);
+			TablaProduct.getDefaultCell().setBorder(0);
+			float[] ColumnaProduct = new float[] {10f, 50f, 15f, 20f};
+			TablaProduct.setWidths(ColumnaProduct);
+			TablaProduct.setHorizontalAlignment(Element.ALIGN_LEFT);
+			
+			PdfPCell pro1 = new PdfPCell(new Phrase("Cant."));
+			PdfPCell pro2 = new PdfPCell(new Phrase("Descripcion"));
+			PdfPCell pro3 = new PdfPCell(new Phrase("Precio U."));
+			PdfPCell pro4 = new PdfPCell(new Phrase("Precio Total"));
+
+			pro1.setBorder(0);
+			pro2.setBorder(0);
+			pro3.setBorder(0);
+			pro4.setBorder(0);
+	
+			TablaProduct.addCell(pro1);
+			TablaProduct.addCell(pro2);
+			TablaProduct.addCell(pro3);
+			TablaProduct.addCell(pro4);
+			
+			for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
+				String Producto = Tabla_NVenta.getValueAt(i, 1).toString();
+				String Cantidad = Tabla_NVenta.getValueAt(i, 2).toString();
+				String Precio = Tabla_NVenta.getValueAt(i, 3).toString();
+				String Total = Tabla_NVenta.getValueAt(i, 4).toString();
+				
+				TablaProduct.addCell(Cantidad);
+				TablaProduct.addCell(Producto);
+				TablaProduct.addCell(Precio);
+				TablaProduct.addCell(Total);
+				
+			}
+			Doc.add(TablaProduct);
+			
+			
+			Paragraph Info = new Paragraph();
+			Info.add(Chunk.NEWLINE);
+			Info.add("Total a Pagar: " + TotalPagar);
+			Info.setAlignment(Element.ALIGN_RIGHT);
+			Doc.add(Info);
+			
+			Paragraph Firma = new Paragraph();
+			Firma.add(Chunk.NEWLINE);
+			Firma.add("Firma\n\n");
+			Firma.add("---------------");
+			Firma.setAlignment(Element.ALIGN_CENTER);
+			Doc.add(Firma);
+			
+		
+			Doc.close();
+			Archivo.close();
+			
+			Desktop.getDesktop().open(file);
+		} catch (Exception e){
+			System.out.println(e.toString());
+		}
 	}
 }
 
