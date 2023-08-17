@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import Config.VentasBD;
 import Mod_Consultas.Proveedor;
 import Mod_Consultas.Ventas;
+import javax.swing.ImageIcon;
 
 public class Form_Ventas extends JInternalFrame {
 	private JTable Tabla_Ventas;
@@ -45,21 +46,28 @@ public class Form_Ventas extends JInternalFrame {
 	 */
 	public Form_Ventas() {
 		setClosable(true);
-		setBounds(100, 100, 950, 682);
+		setBounds(100, 100, 950, 599);
 		getContentPane().setLayout(null);
 		
 		JPanel Panel_Main_Ventas = new JPanel();
-		Panel_Main_Ventas.setBounds(0, 0, 934, 652);
+		Panel_Main_Ventas.setBounds(0, 0, 934, 569);
 		getContentPane().add(Panel_Main_Ventas);
 		Panel_Main_Ventas.setLayout(null);
 		
 		JPanel PanelLateral_Ventas = new JPanel();
-		PanelLateral_Ventas.setBackground(new Color(252, 176, 66));
-		PanelLateral_Ventas.setBounds(0, 0, 317, 652);
+		PanelLateral_Ventas.setBackground(new Color(243, 113, 56));
+		PanelLateral_Ventas.setBounds(0, 0, 317, 569);
 		Panel_Main_Ventas.add(PanelLateral_Ventas);
+		PanelLateral_Ventas.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(Form_Ventas.class.getResource("/Img/LosSocios_Design_FormVentas (1).png")));
+		lblNewLabel.setBounds(0, 0, 317, 542);
+		PanelLateral_Ventas.add(lblNewLabel);
 		
 		JScrollPane scrollPane_Ventas = new JScrollPane();
-		scrollPane_Ventas.setBounds(347, 89, 554, 427);
+		scrollPane_Ventas.setBounds(347, 89, 554, 469);
 		Panel_Main_Ventas.add(scrollPane_Ventas);
 		
 		Tabla_Ventas = new JTable();

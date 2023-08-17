@@ -102,7 +102,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 
 		JSeparator separator_txtDNI_RUC = new JSeparator();
 		separator_txtDNI_RUC.setForeground(new Color(252, 176, 66));
-		separator_txtDNI_RUC.setBackground(new Color(252, 176, 66));
+		separator_txtDNI_RUC.setBackground(new Color(243, 113, 56));
 		separator_txtDNI_RUC.setBounds(374, 155, 145, 13);
 		Panel_Main_Clientes.add(separator_txtDNI_RUC);
 
@@ -121,7 +121,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 
 		JSeparator separator_txtNombre = new JSeparator();
 		separator_txtNombre.setForeground(new Color(252, 176, 66));
-		separator_txtNombre.setBackground(new Color(252, 176, 66));
+		separator_txtNombre.setBackground(new Color(243, 113, 56));
 		separator_txtNombre.setBounds(554, 155, 145, 13);
 		Panel_Main_Clientes.add(separator_txtNombre);
 
@@ -140,7 +140,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 
 		JSeparator separator_txtTelefono = new JSeparator();
 		separator_txtTelefono.setForeground(new Color(252, 176, 66));
-		separator_txtTelefono.setBackground(new Color(252, 176, 66));
+		separator_txtTelefono.setBackground(new Color(243, 113, 56));
 		separator_txtTelefono.setBounds(733, 155, 145, 13);
 		Panel_Main_Clientes.add(separator_txtTelefono);
 
@@ -159,7 +159,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 
 		JSeparator separator_txtDireccion = new JSeparator();
 		separator_txtDireccion.setForeground(new Color(252, 176, 66));
-		separator_txtDireccion.setBackground(new Color(252, 176, 66));
+		separator_txtDireccion.setBackground(new Color(243, 113, 56));
 		separator_txtDireccion.setBounds(374, 229, 145, 13);
 		Panel_Main_Clientes.add(separator_txtDireccion);
 
@@ -225,7 +225,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 			}
 		});
 		Btn_Actualizar.setLayout(null);
-		Btn_Actualizar.setBackground(new Color(252, 176, 66));
+		Btn_Actualizar.setBackground(new Color(243, 113, 56));
 		Btn_Actualizar.setBounds(500, 580, 123, 33);
 		Panel_Main_Clientes.add(Btn_Actualizar);
 
@@ -252,7 +252,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 			}
 		});
 		Btn_Eliminar.setLayout(null);
-		Btn_Eliminar.setBackground(new Color(252, 176, 66));
+		Btn_Eliminar.setBackground(new Color(243, 113, 56));
 		Btn_Eliminar.setBounds(640, 580, 115, 33);
 		Panel_Main_Clientes.add(Btn_Eliminar);
 
@@ -270,7 +270,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 			}
 		});
 		Btn_Nuevo.setLayout(null);
-		Btn_Nuevo.setBackground(new Color(252, 176, 66));
+		Btn_Nuevo.setBackground(new Color(243, 113, 56));
 		Btn_Nuevo.setBounds(763, 580, 115, 33);
 		Panel_Main_Clientes.add(Btn_Nuevo);
 
@@ -300,7 +300,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 				}
 			}
 		});
-		Btn_Registrar.setBackground(new Color(252, 179, 66));
+		Btn_Registrar.setBackground(new Color(243, 113, 56));
 		Btn_Registrar.setForeground(new Color(255, 255, 255));
 		Btn_Registrar.setBounds(374, 580, 116, 33);
 		Panel_Main_Clientes.add(Btn_Registrar);

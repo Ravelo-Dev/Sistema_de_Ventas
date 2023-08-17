@@ -74,7 +74,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		Panel_Main_Proveedores.setLayout(null);
 
 		JPanel PanelLateral_Proveedores = new JPanel();
-		PanelLateral_Proveedores.setBackground(new Color(252, 176, 66));
+		PanelLateral_Proveedores.setBackground(new Color(243, 113, 56));
 		PanelLateral_Proveedores.setBounds(0, 0, 317, 652);
 		Panel_Main_Proveedores.add(PanelLateral_Proveedores);
 		PanelLateral_Proveedores.setLayout(null);
@@ -114,7 +114,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 
 		JSeparator separator_txtRUC = new JSeparator();
 		separator_txtRUC.setForeground(new Color(252, 176, 66));
-		separator_txtRUC.setBackground(new Color(252, 176, 66));
+		separator_txtRUC.setBackground(new Color(243, 113, 56));
 		separator_txtRUC.setBounds(378, 171, 155, 13);
 		Panel_Main_Proveedores.add(separator_txtRUC);
 
@@ -133,7 +133,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 
 		JSeparator separator_txtNombre = new JSeparator();
 		separator_txtNombre.setForeground(new Color(252, 176, 66));
-		separator_txtNombre.setBackground(new Color(252, 176, 66));
+		separator_txtNombre.setBackground(new Color(243, 113, 56));
 		separator_txtNombre.setBounds(559, 171, 155, 13);
 		Panel_Main_Proveedores.add(separator_txtNombre);
 
@@ -152,7 +152,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 
 		JSeparator separator_txtTelefono = new JSeparator();
 		separator_txtTelefono.setForeground(new Color(252, 176, 66));
-		separator_txtTelefono.setBackground(new Color(252, 176, 66));
+		separator_txtTelefono.setBackground(new Color(243, 113, 56));
 		separator_txtTelefono.setBounds(740, 171, 143, 13);
 		Panel_Main_Proveedores.add(separator_txtTelefono);
 
@@ -171,7 +171,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 
 		JSeparator separator_txtDireccion = new JSeparator();
 		separator_txtDireccion.setForeground(new Color(252, 176, 66));
-		separator_txtDireccion.setBackground(new Color(252, 176, 66));
+		separator_txtDireccion.setBackground(new Color(243, 113, 56));
 		separator_txtDireccion.setBounds(378, 243, 155, 13);
 		Panel_Main_Proveedores.add(separator_txtDireccion);
 
@@ -221,7 +221,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 			}
 		});
 		Btn_Registrar.setLayout(null);
-		Btn_Registrar.setBackground(new Color(252, 176, 66));
+		Btn_Registrar.setBackground(new Color(243, 113, 56));
 		Btn_Registrar.setBounds(378, 563, 115, 33);
 		Panel_Main_Proveedores.add(Btn_Registrar);
 
@@ -255,7 +255,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 			}
 		});
 		Btn_Actualizar.setLayout(null);
-		Btn_Actualizar.setBackground(new Color(252, 176, 66));
+		Btn_Actualizar.setBackground(new Color(243, 113, 56));
 		Btn_Actualizar.setBounds(503, 563, 115, 33);
 		Panel_Main_Proveedores.add(Btn_Actualizar);
 
@@ -282,7 +282,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 			}
 		});
 		Btn_Eliminar.setLayout(null);
-		Btn_Eliminar.setBackground(new Color(252, 176, 66));
+		Btn_Eliminar.setBackground(new Color(243, 113, 56));
 		Btn_Eliminar.setBounds(643, 563, 115, 33);
 		Panel_Main_Proveedores.add(Btn_Eliminar);
 
@@ -300,7 +300,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 			}
 		});
 		Btn_Nuevo.setLayout(null);
-		Btn_Nuevo.setBackground(new Color(252, 176, 66));
+		Btn_Nuevo.setBackground(new Color(243, 113, 56));
 		Btn_Nuevo.setBounds(768, 563, 115, 33);
 		Panel_Main_Proveedores.add(Btn_Nuevo);
 

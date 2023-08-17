@@ -97,7 +97,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		JSeparator separator_txtCodigo = new JSeparator();
 		separator_txtCodigo.setForeground(new Color(252, 176, 66));
-		separator_txtCodigo.setBackground(new Color(252, 176, 66));
+		separator_txtCodigo.setBackground(new Color(243, 113, 56));
 		separator_txtCodigo.setBounds(374, 172, 145, 13);
 		Panel_Main_Productos.add(separator_txtCodigo);
 		
@@ -116,7 +116,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		JSeparator separator_txtDescripcion = new JSeparator();
 		separator_txtDescripcion.setForeground(new Color(252, 176, 66));
-		separator_txtDescripcion.setBackground(new Color(252, 176, 66));
+		separator_txtDescripcion.setBackground(new Color(243, 113, 56));
 		separator_txtDescripcion.setBounds(554, 172, 200, 13);
 		Panel_Main_Productos.add(separator_txtDescripcion);
 		
@@ -135,7 +135,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		JSeparator separator_txtCantidad = new JSeparator();
 		separator_txtCantidad.setForeground(new Color(252, 176, 66));
-		separator_txtCantidad.setBackground(new Color(252, 176, 66));
+		separator_txtCantidad.setBackground(new Color(243, 113, 56));
 		separator_txtCantidad.setBounds(789, 172, 90, 13);
 		Panel_Main_Productos.add(separator_txtCantidad);
 		
@@ -154,7 +154,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		JSeparator separator_txtPrecio = new JSeparator();
 		separator_txtPrecio.setForeground(new Color(252, 176, 66));
-		separator_txtPrecio.setBackground(new Color(252, 176, 66));
+		separator_txtPrecio.setBackground(new Color(243, 113, 56));
 		separator_txtPrecio.setBounds(374, 255, 145, 13);
 		Panel_Main_Productos.add(separator_txtPrecio);
 		
@@ -174,7 +174,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		JSeparator separator_txtProveedores = new JSeparator();
 		separator_txtProveedores.setForeground(new Color(252, 176, 66));
-		separator_txtProveedores.setBackground(new Color(252, 176, 66));
+		separator_txtProveedores.setBackground(new Color(243, 113, 56));
 		separator_txtProveedores.setBounds(554, 255, 200, 13);
 		Panel_Main_Productos.add(separator_txtProveedores);
 		
@@ -227,7 +227,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 			}
 		});
 		Btn_Registrar.setLayout(null);
-		Btn_Registrar.setBackground(new Color(252, 176, 66));
+		Btn_Registrar.setBackground(new Color(243, 113, 56));
 		Btn_Registrar.setBounds(374, 528, 115, 33);
 		Panel_Main_Productos.add(Btn_Registrar);
 		
@@ -263,7 +263,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 			}
 		});
 		Btn_Actualizar.setLayout(null);
-		Btn_Actualizar.setBackground(new Color(252, 176, 66));
+		Btn_Actualizar.setBackground(new Color(243, 113, 56));
 		Btn_Actualizar.setBounds(506, 528, 115, 33);
 		Panel_Main_Productos.add(Btn_Actualizar);
 		
@@ -290,7 +290,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 			}
 		});
 		Btn_Eliminar.setLayout(null);
-		Btn_Eliminar.setBackground(new Color(252, 176, 66));
+		Btn_Eliminar.setBackground(new Color(243, 113, 56));
 		Btn_Eliminar.setBounds(639, 528, 115, 33);
 		Panel_Main_Productos.add(Btn_Eliminar);
 		
@@ -308,7 +308,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 			}
 		});
 		Btn_Nuevo.setLayout(null);
-		Btn_Nuevo.setBackground(new Color(252, 176, 66));
+		Btn_Nuevo.setBackground(new Color(243, 113, 56));
 		Btn_Nuevo.setBounds(764, 528, 115, 33);
 		Panel_Main_Productos.add(Btn_Nuevo);
 		
@@ -320,7 +320,7 @@ public class Form_Productos extends JInternalFrame implements Operaciones_Produc
 		
 		
 		JPanel PanelLateral_Productos = new JPanel();
-		PanelLateral_Productos.setBackground(new Color(252, 176, 66));
+		PanelLateral_Productos.setBackground(new Color(243, 113, 56));
 		PanelLateral_Productos.setBounds(0, 0, 345, 652);
 		Panel_Main_Productos.add(PanelLateral_Productos);
 		PanelLateral_Productos.setLayout(null);

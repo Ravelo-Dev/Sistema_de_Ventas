@@ -146,7 +146,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtCodigo = new JSeparator();
 		separator_txtCodigo.setForeground(new Color(252, 176, 66));
-		separator_txtCodigo.setBackground(new Color(252, 176, 66));
+		separator_txtCodigo.setBackground(new Color(243, 113, 56));
 		separator_txtCodigo.setBounds(378, 161, 145, 13);
 		Panel_Main_NVenta.add(separator_txtCodigo);
 		
@@ -165,7 +165,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtDescripcion = new JSeparator();
 		separator_txtDescripcion.setForeground(new Color(252, 176, 66));
-		separator_txtDescripcion.setBackground(new Color(252, 176, 66));
+		separator_txtDescripcion.setBackground(new Color(243, 113, 56));
 		separator_txtDescripcion.setBounds(559, 161, 159, 13);
 		Panel_Main_NVenta.add(separator_txtDescripcion);
 		
@@ -237,7 +237,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtCantidad = new JSeparator();
 		separator_txtCantidad.setForeground(new Color(252, 176, 66));
-		separator_txtCantidad.setBackground(new Color(252, 176, 66));
+		separator_txtCantidad.setBackground(new Color(243, 113, 56));
 		separator_txtCantidad.setBounds(751, 161, 122, 13);
 		Panel_Main_NVenta.add(separator_txtCantidad);
 		
@@ -256,7 +256,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtPrecio = new JSeparator();
 		separator_txtPrecio.setForeground(new Color(252, 176, 66));
-		separator_txtPrecio.setBackground(new Color(252, 176, 66));
+		separator_txtPrecio.setBackground(new Color(243, 113, 56));
 		separator_txtPrecio.setBounds(378, 232, 145, 13);
 		Panel_Main_NVenta.add(separator_txtPrecio);
 		
@@ -275,7 +275,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtStockDisp = new JSeparator();
 		separator_txtStockDisp.setForeground(new Color(252, 176, 66));
-		separator_txtStockDisp.setBackground(new Color(252, 176, 66));
+		separator_txtStockDisp.setBackground(new Color(243, 113, 56));
 		separator_txtStockDisp.setBounds(560, 232, 158, 13);
 		Panel_Main_NVenta.add(separator_txtStockDisp);
 		
@@ -291,7 +291,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		});
 	
 		Btn_Eliminar.setLayout(null);
-		Btn_Eliminar.setBackground(new Color(252, 176, 66));
+		Btn_Eliminar.setBackground(new Color(243, 113, 56));
 		Btn_Eliminar.setBounds(384, 273, 139, 40);
 		Panel_Main_NVenta.add(Btn_Eliminar);
 		
@@ -351,7 +351,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtDNI_RUC = new JSeparator();
 		separator_txtDNI_RUC.setForeground(new Color(252, 176, 66));
-		separator_txtDNI_RUC.setBackground(new Color(252, 176, 66));
+		separator_txtDNI_RUC.setBackground(new Color(243, 113, 56));
 		separator_txtDNI_RUC.setBounds(378, 579, 115, 13);
 		Panel_Main_NVenta.add(separator_txtDNI_RUC);
 		
@@ -369,7 +369,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		
 		JSeparator separator_txtNombre = new JSeparator();
 		separator_txtNombre.setForeground(new Color(252, 176, 66));
-		separator_txtNombre.setBackground(new Color(252, 176, 66));
+		separator_txtNombre.setBackground(new Color(243, 113, 56));
 		separator_txtNombre.setBounds(526, 579, 161, 13);
 		Panel_Main_NVenta.add(separator_txtNombre);
 		
@@ -387,7 +387,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 			}
 		});
 		Btn_Imprimir.setLayout(null);
-		Btn_Imprimir.setBackground(new Color(252, 172, 66));
+		Btn_Imprimir.setBackground(new Color(243, 113, 56));
 		Btn_Imprimir.setBounds(758, 547, 115, 33);
 		Panel_Main_NVenta.add(Btn_Imprimir);
 		
@@ -408,7 +408,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		Panel_Main_NVenta.add(Lbl_TotalMonto);
 		
 		JPanel PanelLateral_NVenta = new JPanel();
-		PanelLateral_NVenta.setBackground(new Color(252, 176, 66));
+		PanelLateral_NVenta.setBackground(new Color(243, 113, 56));
 		PanelLateral_NVenta.setBounds(0, 0, 368, 652);
 		Panel_Main_NVenta.add(PanelLateral_NVenta);
 		PanelLateral_NVenta.setLayout(null);
