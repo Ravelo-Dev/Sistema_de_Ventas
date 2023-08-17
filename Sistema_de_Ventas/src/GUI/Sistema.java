@@ -21,10 +21,13 @@ import java.awt.event.ActionEvent;
 
 import Config.*;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class Sistema {
 
-	private JFrame frame;
+	private JFrame frmSistemaDeVentaboutique;
 	private JDesktopPane desktopPane;
 
 	/**
@@ -35,7 +38,7 @@ public class Sistema {
 			public void run() {
 				try {
 					Sistema window = new Sistema();
-					window.frame.setVisible(true);
+					window.frmSistemaDeVentaboutique.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,36 +57,27 @@ public class Sistema {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1250, 800);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
+		frmSistemaDeVentaboutique = new JFrame();
+		frmSistemaDeVentaboutique.setTitle("Sistema de Venta-Boutique los Socios");
+		frmSistemaDeVentaboutique.setBounds(100, 100, 1250, 800);
+		frmSistemaDeVentaboutique.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSistemaDeVentaboutique.setLocationRelativeTo(null);
 		
 		JDesktopPane dpnEscritorio = new JDesktopPane();
-		frame.getContentPane().add(dpnEscritorio, BorderLayout.CENTER);
+		frmSistemaDeVentaboutique.getContentPane().add(dpnEscritorio, BorderLayout.CENTER);
 		dpnEscritorio.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
+		frmSistemaDeVentaboutique.setJMenuBar(menuBar);
 		
-		JMenu mnuArchivo = new JMenu("Archivos");
-		menuBar.add(mnuArchivo);
+		JMenu mnNewMenu = new JMenu("Gestión de Transacciones");
+		mnNewMenu.setHorizontalAlignment(SwingConstants.RIGHT);
+		mnNewMenu.setBackground(new Color(240, 240, 240));
+		mnNewMenu.setIcon(new ImageIcon("C:\\Users\\maycol\\Downloads\\technical-support (1).png"));
+		menuBar.add(mnNewMenu);
 		
-		JMenuItem mniSalir = new JMenuItem("Salir");
-		mniSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 int i=JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?"); 
-                 if(i==0) {
-                     System.exit(0);
-                 }
-			}
-		});
-		mnuArchivo.add(mniSalir);
-		
-		JMenu mnuclientes = new JMenu("Clientes");
-		menuBar.add(mnuclientes);
-		
-		JMenuItem mniGestionClientes = new JMenuItem("Gestionar Clientes");
+		JMenuItem mniGestionClientes = new JMenuItem("Clientes");
+		mnNewMenu.add(mniGestionClientes);
 		mniGestionClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Clientes clientes = new Form_Clientes();
@@ -95,12 +89,41 @@ public class Sistema {
 				
 			}
 		});
-		mnuclientes.add(mniGestionClientes);
 		
-		JMenu MnuProveedores = new JMenu("Proveedores");
-		menuBar.add(MnuProveedores);
+		JMenuItem MniNuevaVenta = new JMenuItem("Nuevas Ventas");
+		mnNewMenu.add(MniNuevaVenta);
+		MniNuevaVenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Form_NuevaVenta NuevaVenta = new Form_NuevaVenta();
+				dpnEscritorio.add(NuevaVenta);
+				NuevaVenta.show();
+			}
+		});
 		
-		JMenuItem mniGestionProveedor = new JMenuItem("Gestionar Proveedores");
+		JMenuItem mniVentas = new JMenuItem(" Ventas");
+		mnNewMenu.add(mniVentas);
+		mniVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Form_Ventas ventas = new Form_Ventas();
+				dpnEscritorio.add(ventas);
+				ventas.show(); 
+			}
+		});
+		
+		JMenuItem mniGestionProveedor = new JMenuItem("Proveedores");
+		mnNewMenu.add(mniGestionProveedor);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Nuevos Usuarios");
+		mnNewMenu.add(mntmNewMenuItem_1);
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Form_RegistrarUser NuevosUsuarios= new Form_RegistrarUser();
+				
+				dpnEscritorio.add(NuevosUsuarios);
+				NuevosUsuarios.show();
+			}
+			
+		});
 		mniGestionProveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Proveedores proveedores = new Form_Proveedores();
@@ -110,12 +133,12 @@ public class Sistema {
 				proveedores.show();
 			}
 		});
-		MnuProveedores.add(mniGestionProveedor);
 		
-		JMenu MnuProductos = new JMenu("Productos");
+		JMenu MnuProductos = new JMenu("Gestión de Productos");
+		MnuProductos.setIcon(new ImageIcon(Sistema.class.getResource("/Img/inventario.png")));
 		menuBar.add(MnuProductos);
 		
-		JMenuItem mni = new JMenuItem("Gestionar Productos");
+		JMenuItem mni = new JMenuItem(" Productos");
 		mni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Productos GestionProductos = new Form_Productos();
@@ -127,36 +150,29 @@ public class Sistema {
 		});
 		MnuProductos.add(mni);
 		
-		JMenu MnuVentas = new JMenu("Ventas");
-		menuBar.add(MnuVentas);
-		
-		JMenuItem mniVentas = new JMenuItem("Gestionar Ventas");
-		mniVentas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Form_Ventas ventas = new Form_Ventas();
-				dpnEscritorio.add(ventas);
-				ventas.show(); 
-			}
-		});
-		MnuVentas.add(mniVentas);
-		
-		JMenu mniNuevasVentas = new JMenu("Nuevas Ventas");
-		menuBar.add(mniNuevasVentas);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Gestionar Nuevas Ventas");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Form_NuevaVenta NuevaVenta = new Form_NuevaVenta();
-				dpnEscritorio.add(NuevaVenta);
-				NuevaVenta.show();
-			}
-		});
-		mniNuevasVentas.add(mntmNewMenuItem);
-		
-		JMenu mnuConfiguracion = new JMenu("Configuración");
+		JMenu mnuConfiguracion = new JMenu("Información y Configuración");
+		mnuConfiguracion.setIcon(new ImageIcon("C:\\Users\\maycol\\Downloads\\settings.png"));
 		menuBar.add(mnuConfiguracion);
 		
-		JMenuItem mniConfiguracion = new JMenuItem("Config");
+		JMenu mnNewMenu_1 = new JMenu("Acerca de");
+		mnuConfiguracion.add(mnNewMenu_1);
+		
+		JMenuItem mniConfiguracion = new JMenuItem("La Empresa");
+		mnNewMenu_1.add(mniConfiguracion);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("El Desarrollador");
+		mnNewMenu_1.add(mntmNewMenuItem_2);
+		
+		JMenuItem mniSalir = new JMenuItem("Salir");
+		mnNewMenu_1.add(mniSalir);
+		mniSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int i=JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?"); 
+                 if(i==0) {
+                     System.exit(0);
+                 }
+			}
+		});
 		mniConfiguracion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Config config = new Form_Config();
@@ -164,21 +180,5 @@ public class Sistema {
 				config.show();
 			}
 		});
-		mnuConfiguracion.add(mniConfiguracion);
-		
-		JMenu mnuNuevosUsuarios = new JMenu("Nuevos Usuarios");
-		menuBar.add(mnuNuevosUsuarios);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Gestion Nuevos Usuarios");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Form_RegistrarUser NuevosUsuarios= new Form_RegistrarUser();
-				
-				dpnEscritorio.add(NuevosUsuarios);
-				NuevosUsuarios.show();
-			}
-			
-		});
-		mnuNuevosUsuarios.add(mntmNewMenuItem_1);
 	}
 }
