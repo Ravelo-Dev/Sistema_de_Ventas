@@ -1,91 +1,17 @@
 package Mod_Consultas;
 
-public class Productos {
-	private int Id;
-	private String Codigo;
-	private String Nombre;
-	private String Proveedor;
-	private int Stock;
-	private double Precio;
-	
-	
-	public Productos() {
-		
-	}
+import Mod_Abs.ProductosABS;
 
+public class Productos extends ProductosABS{
+
+	public Productos() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Productos(int id, String codigo, String nombre, String proveedor, int stock, double precio) {
-		Id = id;
-		Codigo = codigo;
-		Nombre = nombre;
-		Proveedor = proveedor;
-		Stock = stock;
-		Precio = precio;
+		super(id, codigo, nombre, proveedor, stock, precio);
+		// TODO Auto-generated constructor stub
 	}
-
-
-	public int getId() {
-		return Id;
-	}
-
-
-	public void setId(int id) {
-		Id = id;
-	}
-
-
-	public String getCodigo() {
-		return Codigo;
-	}
-
-
-	public void setCodigo(String codigo) {
-		Codigo = codigo;
-	}
-
-
-	public String getNombre() {
-		return Nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-
-
-	public String getProveedor() {
-		return Proveedor;
-	}
-
-
-	public void setProveedor(String proveedor) {
-		Proveedor = proveedor;
-	}
-
-
-	public int getStock() {
-		return Stock;
-	}
-
-
-	public void setStock(int stock) {
-		Stock = stock;
-	}
-
-
-	public double getPrecio() {
-		return Precio;
-	}
-
-
-	public void setPrecio(double precio) {
-		Precio = precio;
-	}
-	
-	
-	
-	
-	
 	
 }

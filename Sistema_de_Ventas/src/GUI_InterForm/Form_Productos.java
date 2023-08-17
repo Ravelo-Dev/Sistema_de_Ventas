@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Config.*;
+import Interface.Operaciones_Productos;
 import Mod_Consultas.*;
 
 
@@ -27,7 +28,7 @@ import java.util.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Form_Productos extends JInternalFrame {
+public class Form_Productos extends JInternalFrame implements Operaciones_Productos{
 	/**
 	 * 
 	 */
@@ -59,37 +60,6 @@ public class Form_Productos extends JInternalFrame {
 		});
 	}
 	
-	public void Listar_Productos() {
-		List<Productos> ListarProductos = NProductos.Listar_Productos();
-		Modelo = (DefaultTableModel) Tabla_Productos.getModel();
-		Object[] OB = new Object[6];
-		for (int i = 0; i < ListarProductos.size(); i++) {
-			OB[0] = ListarProductos.get(i).getId();
-			OB[1] = ListarProductos.get(i).getCodigo();
-			OB[2] = ListarProductos.get(i).getNombre();
-			OB[3] = ListarProductos.get(i).getProveedor();
-			OB[4] = ListarProductos.get(i).getStock();
-			OB[5] = ListarProductos.get(i).getPrecio();
-			Modelo.addRow(OB);
-		}
-		Tabla_Productos.setModel(Modelo);
-	}
-
-	public void CleanTable() {
-		for (int i = 0; i < Modelo.getRowCount(); i++) {
-			Modelo.removeRow(i);
-			i = i - 1;
-		}
-	}
-
-	public void CleanTEXTBOX() {
-		Txt_ID.setText("");
-		Txt_Codigo.setText("");
-		Txt_Descripcion.setText("");
-		CBox_Proveedores.setSelectedItem("");
-		Txt_Cantidad.setText("");
-		Txt_Precio.setText("");
-	}
 
 	/**
 	 * Create the frame.
@@ -347,23 +317,6 @@ public class Form_Productos extends JInternalFrame {
 		Lbl_Btn_Nuevo.setBounds(10, 0, 95, 33);
 		Btn_Nuevo.add(Lbl_Btn_Nuevo);
 		
-		JPanel Btn_Excel = new JPanel();
-		Btn_Excel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		Btn_Excel.setLayout(null);
-		Btn_Excel.setBackground(new Color(252, 176, 66));
-		Btn_Excel.setBounds(374, 572, 115, 33);
-		Panel_Main_Productos.add(Btn_Excel);
-		
-		JLabel Lbl_Btn_Excel = new JLabel("EXCEL");
-		Lbl_Btn_Excel.setHorizontalAlignment(SwingConstants.CENTER);
-		Lbl_Btn_Excel.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_Excel.setBounds(10, 0, 95, 33);
-		Btn_Excel.add(Lbl_Btn_Excel);
 		
 		JPanel PanelLateral_Productos = new JPanel();
 		PanelLateral_Productos.setBackground(new Color(252, 176, 66));
@@ -378,5 +331,43 @@ public class Form_Productos extends JInternalFrame {
 		
 		
 
+	}
+
+	@Override
+	public void Listar_Productos() {
+		// TODO Auto-generated method stub
+		List<Productos> ListarProductos = NProductos.Listar_Productos();
+		Modelo = (DefaultTableModel) Tabla_Productos.getModel();
+		Object[] OB = new Object[6];
+		for (int i = 0; i < ListarProductos.size(); i++) {
+			OB[0] = ListarProductos.get(i).getId();
+			OB[1] = ListarProductos.get(i).getCodigo();
+			OB[2] = ListarProductos.get(i).getNombre();
+			OB[3] = ListarProductos.get(i).getProveedor();
+			OB[4] = ListarProductos.get(i).getStock();
+			OB[5] = ListarProductos.get(i).getPrecio();
+			Modelo.addRow(OB);
+		}
+		Tabla_Productos.setModel(Modelo);
+	}
+
+	@Override
+	public void CleanTable() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < Modelo.getRowCount(); i++) {
+			Modelo.removeRow(i);
+			i = i - 1;
+		}
+	}
+
+	@Override
+	public void CleanTEXTBOX() {
+		// TODO Auto-generated method stub
+		Txt_ID.setText("");
+		Txt_Codigo.setText("");
+		Txt_Descripcion.setText("");
+		CBox_Proveedores.setSelectedItem("");
+		Txt_Cantidad.setText("");
+		Txt_Precio.setText("");
 	}
 }

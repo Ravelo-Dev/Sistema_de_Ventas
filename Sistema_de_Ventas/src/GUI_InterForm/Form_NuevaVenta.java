@@ -39,13 +39,14 @@ import com.itextpdf.text.pdf.PdfPCell;
 import Config.ClientesBD;
 import Config.ProductosBD;
 import Config.VentasBD;
+import Interface.Operaciones_NuevaVenta;
 import Mod_Consultas.Clientes;
 import Mod_Consultas.Detalles;
 import Mod_Consultas.Productos;
 import Mod_Consultas.Ventas;
 
 
-public class Form_NuevaVenta extends JInternalFrame {
+public class Form_NuevaVenta extends JInternalFrame implements Operaciones_NuevaVenta{
 	
 	 
 	private static final long serialVersionUID = 1L;
@@ -421,8 +422,10 @@ public class Form_NuevaVenta extends JInternalFrame {
 		Panel_Main_NVenta.add(Lbl_TituloMain);
 
 	}
-	
+
+	@Override
 	public void Total_A_Pagar() {
+		// TODO Auto-generated method stub
 		TotalPagar = 0.00;
 		int NumFila = Tabla_NVenta.getRowCount();
 		for (int i = 0; i < NumFila; i++) {
@@ -431,8 +434,12 @@ public class Form_NuevaVenta extends JInternalFrame {
 		}
 		Lbl_TotalMonto.setText(String.format("%.2f", TotalPagar));
 	}
-	
+
+
+
+	@Override
 	public void RegistrarVenta() {
+		// TODO Auto-generated method stub
 		String Cliente = Txt_Nombre.getText();
 		String Vendedor = Lbl_Vendedor.getText();
 		Double Monto = TotalPagar;
@@ -441,8 +448,12 @@ public class Form_NuevaVenta extends JInternalFrame {
 		V.setTotal(Monto);
 		VBD.Registrar_Venta(V);
 	}
-	
+
+
+
+	@Override
 	public void RegistrarDetalle() {
+		// TODO Auto-generated method stub
 		int Id = VBD.ID_Venta();
 		for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
 			String codigo =  Tabla_NVenta.getValueAt(i, 0).toString();
@@ -456,8 +467,12 @@ public class Form_NuevaVenta extends JInternalFrame {
 			
 		}
 	}
-	
+
+
+
+	@Override
 	public void ActualizarStock() {
+		// TODO Auto-generated method stub
 		for (int i = 0; i < Tabla_NVenta.getRowCount(); i++) {
 			String codigo =  Tabla_NVenta.getValueAt(i, 0).toString();
 			int cantidad = Integer.parseInt(Tabla_NVenta.getValueAt(i, 2).toString());
@@ -466,24 +481,36 @@ public class Form_NuevaVenta extends JInternalFrame {
 			VBD.Actualizar_STOCK(StockActual, codigo);
 		}
 	}
-	
+
+
+
+	@Override
 	public void CleanTEXTBOX() {
+		// TODO Auto-generated method stub
 		Txt_Codigo.setText("");
 		Txt_Descripcion.setText("");
 		Txt_Cantidad.setText("");
 		Txt_Disponible.setText("");
 		Txt_Precio.setText("");
 	}
-	
+
+
+
+	@Override
 	public void CleanTable() {
+		// TODO Auto-generated method stub
 		TMP = (DefaultTableModel) Tabla_NVenta.getModel();
 		int Fila = Tabla_NVenta.getRowCount();
 		for (int i = 0; i < Fila; i++) {
 			TMP.removeRow(0);
 		}
 	}
-	
+
+
+
+	@Override
 	public void PDF() {
+		// TODO Auto-generated method stub
 		try {
 			FileOutputStream Archivo;
 			File file = new File("src/PDF/Venta.pdf");

@@ -20,10 +20,12 @@ import javax.swing.table.DefaultTableModel;
 
 import Mod_Consultas.Proveedor;
 import Config.ProveedorBD;
+import Interface.Operaciones_Proveedores;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Form_Proveedores extends JInternalFrame {
+public class Form_Proveedores extends JInternalFrame implements Operaciones_Proveedores{
 	/**
 	 * 
 	 */
@@ -57,38 +59,6 @@ public class Form_Proveedores extends JInternalFrame {
 		});
 	}
 	
-	
-	public void Listar_Proveedores() {
-		List<Proveedor> ListarProveedores = NProveedores.Listar_Proveedores();
-		Modelo = (DefaultTableModel) Tabla_Proveedores.getModel();
-		Object[] OB = new Object[6];
-		for (int i = 0; i < ListarProveedores.size(); i++) {
-			OB[0] = ListarProveedores.get(i).getId();
-			OB[1] = ListarProveedores.get(i).getRuc();
-			OB[2] = ListarProveedores.get(i).getNombre();
-			OB[3] = ListarProveedores.get(i).getTelefono();
-			OB[4] = ListarProveedores.get(i).getDireccion();
-			OB[5] = ListarProveedores.get(i).getRazon();
-			Modelo.addRow(OB);
-		}
-		Tabla_Proveedores.setModel(Modelo);
-	}
-
-	public void CleanTable() {
-		for (int i = 0; i < Modelo.getRowCount(); i++) {
-			Modelo.removeRow(i);
-			i = i - 1;
-		}
-	}
-
-	public void CleanTEXTBOX() {
-		Txt_ID.setText("");
-		Txt_RUC.setText("");
-		Txt_Nombre.setText("");
-		Txt_Telefono.setText("");
-		Txt_Direccion.setText("");
-		Txt_RazonSocial.setText("");
-	}
 	
 	/*
 	 * Create the frame.
@@ -357,5 +327,46 @@ public class Form_Proveedores extends JInternalFrame {
 		Lbl_Btn_Nuevo.setBounds(10, 0, 95, 33);
 		Btn_Nuevo.add(Lbl_Btn_Nuevo);
 
+	}
+
+
+	@Override
+	public void Listar_Proveedores() {
+		// TODO Auto-generated method stub
+		List<Proveedor> ListarProveedores = NProveedores.Listar_Proveedores();
+		Modelo = (DefaultTableModel) Tabla_Proveedores.getModel();
+		Object[] OB = new Object[6];
+		for (int i = 0; i < ListarProveedores.size(); i++) {
+			OB[0] = ListarProveedores.get(i).getId();
+			OB[1] = ListarProveedores.get(i).getRuc();
+			OB[2] = ListarProveedores.get(i).getNombre();
+			OB[3] = ListarProveedores.get(i).getTelefono();
+			OB[4] = ListarProveedores.get(i).getDireccion();
+			OB[5] = ListarProveedores.get(i).getRazon();
+			Modelo.addRow(OB);
+		}
+		Tabla_Proveedores.setModel(Modelo);
+	}
+
+
+	@Override
+	public void CleanTable() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < Modelo.getRowCount(); i++) {
+			Modelo.removeRow(i);
+			i = i - 1;
+		}
+	}
+
+
+	@Override
+	public void CleanTEXTBOX() {
+		// TODO Auto-generated method stub
+		Txt_ID.setText("");
+		Txt_RUC.setText("");
+		Txt_Nombre.setText("");
+		Txt_Telefono.setText("");
+		Txt_Direccion.setText("");
+		Txt_RazonSocial.setText("");
 	}
 }

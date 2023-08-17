@@ -18,13 +18,14 @@ import javax.swing.table.DefaultTableModel;
 
 import Mod_Consultas.*;
 import Config.*;
+import Interface.Operaciones_Clientes;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Form_Clientes extends JInternalFrame {
+public class Form_Clientes extends JInternalFrame implements Operaciones_Clientes {
 
 	/**
 	 * 
@@ -62,37 +63,6 @@ public class Form_Clientes extends JInternalFrame {
 	 * 
 	 * @return
 	 */
-	public void Listar_Clientes() {
-		List<Clientes> ListarClientes = NClientes.Listar_Clientes();
-		Modelo = (DefaultTableModel) Tabla_Clientes.getModel();
-		Object[] OB = new Object[6];
-		for (int i = 0; i < ListarClientes.size(); i++) {
-			OB[0] = ListarClientes.get(i).getId();
-			OB[1] = ListarClientes.get(i).getDni();
-			OB[2] = ListarClientes.get(i).getNombre();
-			OB[3] = ListarClientes.get(i).getTelefono();
-			OB[4] = ListarClientes.get(i).getDireccion();
-			OB[5] = ListarClientes.get(i).getRazon();
-			Modelo.addRow(OB);
-		}
-		Tabla_Clientes.setModel(Modelo);
-	}
-
-	public void CleanTable() {
-		for (int i = 0; i < Modelo.getRowCount(); i++) {
-			Modelo.removeRow(i);
-			i = i - 1;
-		}
-	}
-
-	public void CleanTEXTBOX() {
-		Txt_ID.setText("");
-		Txt_DNI_RUC.setText("");
-		Txt_Nombre.setText("");
-		Txt_Telefono.setText("");
-		Txt_Direccion.setText("");
-		Txt_RazonSocial.setText("");
-	}
 
 	public Form_Clientes() {
 		setClosable(true);
@@ -354,6 +324,44 @@ public class Form_Clientes extends JInternalFrame {
 		Lbl_Btn_Registrar.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Btn_Registrar.add(Lbl_Btn_Registrar);
 
+	}
+
+	@Override
+	public void Listar_Clientes() {
+		// TODO Auto-generated method stub
+		List<Clientes> ListarClientes = NClientes.Listar_Clientes();
+		Modelo = (DefaultTableModel) Tabla_Clientes.getModel();
+		Object[] OB = new Object[6];
+		for (int i = 0; i < ListarClientes.size(); i++) {
+			OB[0] = ListarClientes.get(i).getId();
+			OB[1] = ListarClientes.get(i).getDni();
+			OB[2] = ListarClientes.get(i).getNombre();
+			OB[3] = ListarClientes.get(i).getTelefono();
+			OB[4] = ListarClientes.get(i).getDireccion();
+			OB[5] = ListarClientes.get(i).getRazon();
+			Modelo.addRow(OB);
+		}
+		Tabla_Clientes.setModel(Modelo);
+	}
+
+	@Override
+	public void CleanTEXTBOX() {
+		// TODO Auto-generated method stub
+		Txt_ID.setText("");
+		Txt_DNI_RUC.setText("");
+		Txt_Nombre.setText("");
+		Txt_Telefono.setText("");
+		Txt_Direccion.setText("");
+		Txt_RazonSocial.setText("");
+	}
+
+	@Override
+	public void CleanTable() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < Modelo.getRowCount(); i++) {
+			Modelo.removeRow(i);
+			i = i - 1;
+		}
 	}
 
 }
