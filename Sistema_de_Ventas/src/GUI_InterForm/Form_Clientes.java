@@ -71,7 +71,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		getContentPane().setLayout(null);
 
 		JPanel Panel_Main_Clientes = new JPanel();
-		Panel_Main_Clientes.setBounds(0, 0, 934, 652);
+		Panel_Main_Clientes.setBounds(0, 0, 889, 635);
 		getContentPane().add(Panel_Main_Clientes);
 		Panel_Main_Clientes.setLayout(null);
 
@@ -212,8 +212,8 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(Form_Clientes.class.getResource("/Img/LosSocios_Design_FormClientes.png")));
-		lblNewLabel.setBounds(0, 0, 350, 641);
+		lblNewLabel.setIcon(new ImageIcon(Form_Clientes.class.getResource("/Img/LosSocios_Design_FormClientes_REESCALADO.png")));
+		lblNewLabel.setBounds(0, 0, 350, 630);
 		Panel_LateralClientes.add(lblNewLabel);
 
 		JPanel Btn_Actualizar = new JPanel();
@@ -250,7 +250,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		JLabel Lbl_Btn_Actualizar = new JLabel("ACTUALIZAR");
 		Lbl_Btn_Actualizar.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_Btn_Actualizar.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_Actualizar.setBounds(10, 0, 95, 33);
+		Lbl_Btn_Actualizar.setBounds(10, 0, 103, 33);
 		Btn_Actualizar.add(Lbl_Btn_Actualizar);
 
 		JPanel Btn_Eliminar = new JPanel();
