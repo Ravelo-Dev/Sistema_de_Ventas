@@ -20,7 +20,7 @@ public class ClientesBD {
 	ResultSet rs;
 
 	public boolean Registrar_Clientes(Clientes cl) {
-		String sql = "INSERT INTO clientes (DNI, Nombre, Telefono, Direccion, Razon) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO clientes (DNI, Nombre, Telefono, Direccion) VALUES (?, ?, ?, ?)";
 
 		try {
 			con = co.getConnection();
@@ -29,7 +29,6 @@ public class ClientesBD {
 			ps.setString(2, cl.getNombre());
 			ps.setString(3, cl.getTelefono());
 			ps.setString(4, cl.getDireccion());
-			ps.setString(5, cl.getRazon());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -60,7 +59,6 @@ public class ClientesBD {
 				cl.setNombre(rs.getString("Nombre"));
 				cl.setTelefono(rs.getString("Telefono"));
 				cl.setDireccion(rs.getString("Direccion"));
-				cl.setRazon(rs.getString("Razon"));
 				Lista_de_Clientes.add(cl);
 			}
 		}catch (SQLException e) {
@@ -84,15 +82,14 @@ public class ClientesBD {
 	}
 	
 	public boolean Actualizar_Clientes(Clientes cl) {
-		String sql = "UPDATE clientes SET DNI = ?, Nombre = ? , Telefono = ?, Direccion = ?, Razon = ? WHERE Id = ?";
+		String sql = "UPDATE clientes SET DNI = ?, Nombre = ? , Telefono = ?, Direccion = ? WHERE Id = ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, cl.getDni());
 			ps.setString(2, cl.getNombre());
 			ps.setString(3, cl.getTelefono());
 			ps.setString(4, cl.getDireccion());
-			ps.setString(5, cl.getRazon());
-			ps.setInt(6, cl.getId());
+			ps.setInt(5, cl.getId());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {

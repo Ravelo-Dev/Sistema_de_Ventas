@@ -25,6 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 public class Sistema {
 
@@ -59,6 +60,7 @@ public class Sistema {
 	 */
 	private void initialize() {
 		frmSistemaDeVentaboutique = new JFrame();
+		frmSistemaDeVentaboutique.setIconImage(Toolkit.getDefaultToolkit().getImage(Sistema.class.getResource("/Img/sneakers.png")));
 		frmSistemaDeVentaboutique.setBounds(100, 100, 1250, 800);
 		frmSistemaDeVentaboutique.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSistemaDeVentaboutique.setLocationRelativeTo(null);

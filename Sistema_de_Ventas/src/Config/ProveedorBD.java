@@ -18,7 +18,7 @@ public class ProveedorBD {
 	ResultSet rs;
 	
 	public boolean Registrar_Proveedores(Proveedor pd) {
-		String sql = "INSERT INTO proveedores (RUC, Nombre, Telefono, Direccion, Razon) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO proveedores (RUC, Nombre, Telefono, Direccion) VALUES (?, ?, ?, ?)";
 
 		try {
 			con = co.getConnection();
@@ -27,7 +27,6 @@ public class ProveedorBD {
 			ps.setString(2, pd.getNombre());
 			ps.setString(3, pd.getTelefono());
 			ps.setString(4, pd.getDireccion());
-			ps.setString(5, pd.getRazon());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -54,7 +53,6 @@ public class ProveedorBD {
 				pd.setNombre(rs.getString("Nombre"));
 				pd.setTelefono(rs.getString("Telefono"));
 				pd.setDireccion(rs.getString("Direccion"));
-				pd.setRazon(rs.getString("Razon"));
 				Lista_de_Proveedores.add(pd);
 			}
 		}catch (SQLException e) {
@@ -78,15 +76,14 @@ public class ProveedorBD {
 	}
 	
 	public boolean Actualizar_Proveedores(Proveedor pd) {
-		String sql = "UPDATE Proveedores SET RUC = ?, Nombre = ? , Telefono = ?, Direccion = ?, Razon = ? WHERE Id = ?";
+		String sql = "UPDATE Proveedores SET RUC = ?, Nombre = ? , Telefono = ?, Direccion = ? WHERE Id = ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, pd.getRuc());
 			ps.setString(2, pd.getNombre());
 			ps.setString(3, pd.getTelefono());
 			ps.setString(4, pd.getDireccion());
-			ps.setString(5, pd.getRazon());
-			ps.setInt(6, pd.getId());
+			ps.setInt(5, pd.getId());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {

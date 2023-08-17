@@ -11,8 +11,8 @@ public class Clientes extends ClientesABS {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Clientes(int id, int dni, String nombre, String telefono, String direccion, String razon) {
-		super(id, dni, nombre, telefono, direccion, razon);
+	public Clientes(int id, int dni, String nombre, String telefono, String direccion) {
+		super(id, dni, nombre, telefono, direccion);
 		// TODO Auto-generated constructor stub
 	}
 	

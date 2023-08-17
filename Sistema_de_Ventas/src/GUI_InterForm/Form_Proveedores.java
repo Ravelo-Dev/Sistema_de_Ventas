@@ -40,7 +40,6 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 	private JTextField Txt_Nombre;
 	private JTextField Txt_Telefono;
 	private JTextField Txt_Direccion;
-	private JTextField Txt_RazonSocial;
 	private JTable Tabla_Proveedores;
 
 	/**
@@ -176,25 +175,6 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		separator_txtDireccion.setBounds(378, 243, 155, 13);
 		Panel_Main_Proveedores.add(separator_txtDireccion);
 
-		JLabel Lbl_RazonSocial = new JLabel("Razon Social");
-		Lbl_RazonSocial.setHorizontalAlignment(SwingConstants.CENTER);
-		Lbl_RazonSocial.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_RazonSocial.setBounds(559, 189, 93, 19);
-		Panel_Main_Proveedores.add(Lbl_RazonSocial);
-
-		Txt_RazonSocial = new JTextField();
-		Txt_RazonSocial.setFont(new Font("Roboto Light", Font.PLAIN, 14));
-		Txt_RazonSocial.setColumns(10);
-		Txt_RazonSocial.setBorder(null);
-		Txt_RazonSocial.setBounds(559, 210, 155, 33);
-		Panel_Main_Proveedores.add(Txt_RazonSocial);
-
-		JSeparator separator_txtRazonSocial = new JSeparator();
-		separator_txtRazonSocial.setForeground(new Color(252, 176, 66));
-		separator_txtRazonSocial.setBackground(new Color(252, 176, 66));
-		separator_txtRazonSocial.setBounds(559, 243, 155, 13);
-		Panel_Main_Proveedores.add(separator_txtRazonSocial);
-
 		JScrollPane scrollPane_Proveedores = new JScrollPane();
 		scrollPane_Proveedores.setBounds(378, 296, 505, 221);
 		Panel_Main_Proveedores.add(scrollPane_Proveedores);
@@ -209,14 +189,13 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 				Txt_Nombre.setText(Tabla_Proveedores.getValueAt(Fila, 2).toString());
 				Txt_Telefono.setText(Tabla_Proveedores.getValueAt(Fila, 3).toString());
 				Txt_Direccion.setText(Tabla_Proveedores.getValueAt(Fila, 4).toString());
-				Txt_RazonSocial.setText(Tabla_Proveedores.getValueAt(Fila, 5).toString());
 			}
 		});
 		Tabla_Proveedores.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "RNC", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL"
+				"ID", "RNC", "NOMBRE", "TELEFONO", "DIRECCION"
 			}
 		));
 		scrollPane_Proveedores.setViewportView(Tabla_Proveedores);
@@ -226,13 +205,11 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (!"".equals(Txt_RUC.getText()) || !"".equals(Txt_Nombre.getText())
-						|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())
-						|| !"".equals(Txt_RazonSocial.getText())) {
+						|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())) {
 					pd.setRuc(Integer.parseInt(Txt_RUC.getText()));
 					pd.setNombre(Txt_Nombre.getText());
 					pd.setTelefono(Txt_Telefono.getText());
 					pd.setDireccion(Txt_Direccion.getText());
-					pd.setRazon(Txt_RazonSocial.getText());
 					NProveedores.Registrar_Proveedores(pd);
 					CleanTable();
 					CleanTEXTBOX();
@@ -263,13 +240,11 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 				} else {
 
 					if (!"".equals(Txt_RUC.getText()) || !"".equals(Txt_Nombre.getText())
-							|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())
-							|| !"".equals(Txt_RazonSocial.getText())) {
+							|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())) {
 						pd.setRuc(Integer.parseInt(Txt_RUC.getText()));
 						pd.setNombre(Txt_Nombre.getText());
 						pd.setTelefono(Txt_Telefono.getText());
 						pd.setDireccion(Txt_Direccion.getText());
-						pd.setRazon(Txt_RazonSocial.getText());
 						pd.setId(Integer.parseInt(Txt_ID.getText()));
 						NProveedores.Actualizar_Proveedores(pd);
 						CleanTable();
@@ -287,7 +262,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		JLabel Lbl_Btn_Actualizar = new JLabel("ACTUALIZAR");
 		Lbl_Btn_Actualizar.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_Btn_Actualizar.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_Actualizar.setBounds(10, 0, 95, 33);
+		Lbl_Btn_Actualizar.setBounds(0, 0, 115, 33);
 		Btn_Actualizar.add(Lbl_Btn_Actualizar);
 
 		JPanel Btn_Eliminar = new JPanel();
@@ -343,14 +318,13 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		// TODO Auto-generated method stub
 		List<Proveedor> ListarProveedores = NProveedores.Listar_Proveedores();
 		Modelo = (DefaultTableModel) Tabla_Proveedores.getModel();
-		Object[] OB = new Object[6];
+		Object[] OB = new Object[5];
 		for (int i = 0; i < ListarProveedores.size(); i++) {
 			OB[0] = ListarProveedores.get(i).getId();
 			OB[1] = ListarProveedores.get(i).getRuc();
 			OB[2] = ListarProveedores.get(i).getNombre();
 			OB[3] = ListarProveedores.get(i).getTelefono();
 			OB[4] = ListarProveedores.get(i).getDireccion();
-			OB[5] = ListarProveedores.get(i).getRazon();
 			Modelo.addRow(OB);
 		}
 		Tabla_Proveedores.setModel(Modelo);
@@ -375,6 +349,5 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		Txt_Nombre.setText("");
 		Txt_Telefono.setText("");
 		Txt_Direccion.setText("");
-		Txt_RazonSocial.setText("");
 	}
 }

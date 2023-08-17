@@ -6,19 +6,17 @@ public abstract class ProveedorABS {
 	private String Nombre;
 	private String Telefono;
 	private String Direccion;
-	private String Razon;
 	
 	public ProveedorABS() {
 	
 	}
 
-	public ProveedorABS(int id, int ruc, String nombre, String telefono, String direccion, String razon) {
+	public ProveedorABS(int id, int ruc, String nombre, String telefono, String direccion) {
 		Id = id;
 		Ruc = ruc;
 		Nombre = nombre;
 		Telefono = telefono;
 		Direccion = direccion;
-		Razon = razon;
 	}
 
 
@@ -71,14 +69,5 @@ public abstract class ProveedorABS {
 		Direccion = direccion;
 	}
 
-
-	public String getRazon() {
-		return Razon;
-	}
-
-
-	public void setRazon(String razon) {
-		Razon = razon;
-	}
 	
 }

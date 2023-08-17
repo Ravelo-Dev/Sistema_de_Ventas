@@ -40,7 +40,6 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 	private JTextField Txt_Nombre;
 	private JTextField Txt_Telefono;
 	private JTextField Txt_Direccion;
-	private JTextField Txt_RazonSocial;
 	private JTable Tabla_Clientes;
 
 	/**
@@ -164,25 +163,6 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		separator_txtDireccion.setBounds(374, 229, 145, 13);
 		Panel_Main_Clientes.add(separator_txtDireccion);
 
-		JLabel Lbl_RazonSocial = new JLabel("Razon Social");
-		Lbl_RazonSocial.setHorizontalAlignment(SwingConstants.CENTER);
-		Lbl_RazonSocial.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_RazonSocial.setBounds(554, 171, 93, 19);
-		Panel_Main_Clientes.add(Lbl_RazonSocial);
-
-		Txt_RazonSocial = new JTextField();
-		Txt_RazonSocial.setFont(new Font("Roboto Light", Font.PLAIN, 14));
-		Txt_RazonSocial.setColumns(10);
-		Txt_RazonSocial.setBorder(null);
-		Txt_RazonSocial.setBounds(554, 196, 145, 33);
-		Panel_Main_Clientes.add(Txt_RazonSocial);
-
-		JSeparator separator_txtRazonSocial = new JSeparator();
-		separator_txtRazonSocial.setForeground(new Color(252, 176, 66));
-		separator_txtRazonSocial.setBackground(new Color(252, 176, 66));
-		separator_txtRazonSocial.setBounds(554, 229, 145, 13);
-		Panel_Main_Clientes.add(separator_txtRazonSocial);
-
 		JScrollPane scrollPane_Clientes = new JScrollPane();
 		scrollPane_Clientes.setBounds(374, 283, 504, 267);
 		Panel_Main_Clientes.add(scrollPane_Clientes);
@@ -197,15 +177,19 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 				Txt_Nombre.setText(Tabla_Clientes.getValueAt(Fila, 2).toString());
 				Txt_Telefono.setText(Tabla_Clientes.getValueAt(Fila, 3).toString());
 				Txt_Direccion.setText(Tabla_Clientes.getValueAt(Fila, 4).toString());
-				Txt_RazonSocial.setText(Tabla_Clientes.getValueAt(Fila, 5).toString());
 			}
 		});
-		Tabla_Clientes.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "ID", "DNI/RUC", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL" }));
+		Tabla_Clientes.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "DNI/RUC", "NOMBRE", "TELEFONO", "DIRECCION"
+			}
+		));
 		scrollPane_Clientes.setViewportView(Tabla_Clientes);
 
 		JPanel Panel_LateralClientes = new JPanel();
-		Panel_LateralClientes.setBackground(new Color(252, 172, 66));
+		Panel_LateralClientes.setBackground(new Color(243, 113, 56));
 		Panel_LateralClientes.setBounds(0, 0, 350, 652);
 		Panel_Main_Clientes.add(Panel_LateralClientes);
 		Panel_LateralClientes.setLayout(null);
@@ -225,13 +209,11 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 				} else {
 
 					if (!"".equals(Txt_DNI_RUC.getText()) || !"".equals(Txt_Nombre.getText())
-							|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())
-							|| !"".equals(Txt_RazonSocial.getText())) {
+							|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())) {
 						cl.setDni(Integer.parseInt(Txt_DNI_RUC.getText()));
 						cl.setNombre(Txt_Nombre.getText());
 						cl.setTelefono(Txt_Telefono.getText());
 						cl.setDireccion(Txt_Direccion.getText());
-						cl.setRazon(Txt_RazonSocial.getText());
 						cl.setId(Integer.parseInt(Txt_ID.getText()));
 						NClientes.Actualizar_Clientes(cl);
 						CleanTable();
@@ -303,13 +285,11 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (!"".equals(Txt_DNI_RUC.getText()) || !"".equals(Txt_Nombre.getText())
-						|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())
-						|| !"".equals(Txt_RazonSocial.getText())) {
+						|| !"".equals(Txt_Telefono.getText()) || !"".equals(Txt_Direccion.getText())) {
 					cl.setDni(Integer.parseInt(Txt_DNI_RUC.getText()));
 					cl.setNombre(Txt_Nombre.getText());
 					cl.setTelefono(Txt_Telefono.getText());
 					cl.setDireccion(Txt_Direccion.getText());
-					cl.setRazon(Txt_RazonSocial.getText());
 					NClientes.Registrar_Clientes(cl);
 					CleanTable();
 					CleanTEXTBOX();
@@ -339,14 +319,13 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		// TODO Auto-generated method stub
 		List<Clientes> ListarClientes = NClientes.Listar_Clientes();
 		Modelo = (DefaultTableModel) Tabla_Clientes.getModel();
-		Object[] OB = new Object[6];
+		Object[] OB = new Object[5];
 		for (int i = 0; i < ListarClientes.size(); i++) {
 			OB[0] = ListarClientes.get(i).getId();
 			OB[1] = ListarClientes.get(i).getDni();
 			OB[2] = ListarClientes.get(i).getNombre();
 			OB[3] = ListarClientes.get(i).getTelefono();
 			OB[4] = ListarClientes.get(i).getDireccion();
-			OB[5] = ListarClientes.get(i).getRazon();
 			Modelo.addRow(OB);
 		}
 		Tabla_Clientes.setModel(Modelo);
@@ -360,7 +339,6 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		Txt_Nombre.setText("");
 		Txt_Telefono.setText("");
 		Txt_Direccion.setText("");
-		Txt_RazonSocial.setText("");
 	}
 
 	@Override

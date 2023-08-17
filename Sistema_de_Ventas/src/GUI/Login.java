@@ -24,6 +24,9 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Mod_Consultas.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Toolkit;
 
 
 public class Login extends JFrame {
@@ -55,6 +58,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/Img/sneakers.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 840, 577);
 		contentPane = new JPanel();
@@ -98,6 +102,12 @@ public class Login extends JFrame {
 		Panel_main_login.add(Lbl_Password);
 		
 		Txt_Password = new JPasswordField();
+		Txt_Password.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				Validar();
+			}
+		});
 		Txt_Password.setFont(new Font("Roboto Light", Font.PLAIN, 16));
 		Txt_Password.setBorder(null);
 		Txt_Password.setBounds(44, 368, 410, 36);

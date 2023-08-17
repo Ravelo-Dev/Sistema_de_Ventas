@@ -9,8 +9,8 @@ public class Proveedor extends ProveedorABS{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Proveedor(int id, int ruc, String nombre, String telefono, String direccion, String razon) {
-		super(id, ruc, nombre, telefono, direccion, razon);
+	public Proveedor(int id, int ruc, String nombre, String telefono, String direccion) {
+		super(id, ruc, nombre, telefono, direccion);
 		// TODO Auto-generated constructor stub
 	}
 	

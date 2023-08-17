@@ -6,7 +6,6 @@ public abstract class ClientesABS {
 	private String Nombre;
 	private String Telefono;
 	private String Direccion;
-	private String Razon;
 	
 	
 	public ClientesABS() {
@@ -14,13 +13,12 @@ public abstract class ClientesABS {
 	}
 
 
-	public ClientesABS(int id, int dni, String nombre, String telefono, String direccion, String razon) {
+	public ClientesABS(int id, int dni, String nombre, String telefono, String direccion) {
 		Id = id;
 		Dni = dni;
 		Nombre = nombre;
 		Telefono = telefono;
 		Direccion = direccion;
-		Razon = razon;
 	}
 
 
@@ -74,12 +72,4 @@ public abstract class ClientesABS {
 	}
 
 
-	public String getRazon() {
-		return Razon;
-	}
-
-
-	public void setRazon(String razon) {
-		Razon = razon;
-	}
 }
