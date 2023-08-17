@@ -38,7 +38,7 @@ public class ProveedorBD {
 		
 	}
 	
-public List<Proveedor> Listar_Proveedores() {
+	public List<Proveedor> Listar_Proveedores() {
 		
 		List<Proveedor> Lista_de_Proveedores = new ArrayList<Proveedor>();
 		String sql = "SELECT * FROM proveedores";

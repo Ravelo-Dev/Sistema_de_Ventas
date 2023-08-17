@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Mod_Consultas.Detalles;
+import Mod_Consultas.Proveedor;
 import Mod_Consultas.Ventas;
 
 public class VentasBD {
@@ -81,6 +84,29 @@ public class VentasBD {
 			System.out.println(e.toString());
 			return false;
 		}
+	}
+	
+	public List<Ventas> Listar_Ventas() {
+		
+		List<Ventas> Lista_de_Ventas = new ArrayList<Ventas>();
+		String sql = "SELECT * FROM ventas";
+		try {
+			con = co.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Ventas vnt = new Ventas();
+				vnt.setId(rs.getInt("Id"));
+				vnt.setCliente(rs.getString("Cliente"));
+				vnt.setVendedor(rs.getString("Vendedor"));
+				vnt.setTotal(rs.getDouble("Total"));
+				Lista_de_Ventas.add(vnt);
+			}
+		}catch (SQLException e) {
+			System.out.println(e.toString());
+		}
+		return Lista_de_Ventas;
 	}
 	
 }

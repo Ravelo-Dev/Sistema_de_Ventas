@@ -3,6 +3,7 @@ package GUI_InterForm;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -12,8 +13,16 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import Config.VentasBD;
+import Mod_Consultas.Proveedor;
+import Mod_Consultas.Ventas;
+
 public class Form_Ventas extends JInternalFrame {
 	private JTable Tabla_Ventas;
+	DefaultTableModel Modelo = new DefaultTableModel();
+	Ventas V = new Ventas();
+    VentasBD VBD = new VentasBD();
+	
 
 	/**
 	 * Launch the application.
@@ -63,24 +72,34 @@ public class Form_Ventas extends JInternalFrame {
 		));
 		scrollPane_Ventas.setViewportView(Tabla_Ventas);
 		
-		JPanel Btn_PDF = new JPanel();
-		Btn_PDF.setLayout(null);
-		Btn_PDF.setBackground(new Color(252, 176, 66));
-		Btn_PDF.setBounds(347, 563, 115, 33);
-		Panel_Main_Ventas.add(Btn_PDF);
-		
-		JLabel Lbl_Btn_PDF = new JLabel("EXCEL");
-		Lbl_Btn_PDF.setHorizontalAlignment(SwingConstants.CENTER);
-		Lbl_Btn_PDF.setFont(new Font("Roboto", Font.PLAIN, 16));
-		Lbl_Btn_PDF.setBounds(10, 0, 95, 33);
-		Btn_PDF.add(Lbl_Btn_PDF);
-		
 		JLabel Lbl_TituloMain = new JLabel("RESUMEN DE VENTAS");
 		Lbl_TituloMain.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_TituloMain.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		Lbl_TituloMain.setBounds(347, 33, 222, 19);
 		Panel_Main_Ventas.add(Lbl_TituloMain);
 
+	}
+	
+	public void Listar_Ventas() {
+		List<Ventas> ListarVentas = VBD.Listar_Ventas();
+		Modelo = (DefaultTableModel) Tabla_Ventas.getModel();
+		Object[] OB = new Object[4];
+		for (int i = 0; i < ListarVentas.size(); i++) {
+			OB[0] = ListarVentas.get(i).getId();
+			OB[1] = ListarVentas.get(i).getCliente();
+			OB[2] = ListarVentas.get(i).getVendedor();
+			OB[3] = ListarVentas.get(i).getTotal();
+			Modelo.addRow(OB);
+		}
+		Tabla_Ventas.setModel(Modelo);
+	}
+	
+	public void CleanTable() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < Modelo.getRowCount(); i++) {
+			Modelo.removeRow(i);
+			i = i - 1;
+		}
 	}
 
 }

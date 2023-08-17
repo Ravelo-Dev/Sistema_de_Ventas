@@ -24,6 +24,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 public class Sistema {
 
@@ -67,16 +68,23 @@ public class Sistema {
 		frmSistemaDeVentaboutique.getContentPane().add(dpnEscritorio, BorderLayout.CENTER);
 		dpnEscritorio.setLayout(null);
 		
+		JLabel lbl_img_main = new JLabel("New label");
+		lbl_img_main.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_img_main.setIcon(new ImageIcon(Sistema.class.getResource("/Img/LosSocios_VentanaPrincipal.png")));
+		lbl_img_main.setBounds(0, 0, 1234, 723);
+		dpnEscritorio.add(lbl_img_main);
+		
 		JMenuBar menuBar = new JMenuBar();
 		frmSistemaDeVentaboutique.setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Gestión de Transacciones");
 		mnNewMenu.setHorizontalAlignment(SwingConstants.RIGHT);
 		mnNewMenu.setBackground(new Color(240, 240, 240));
-		mnNewMenu.setIcon(new ImageIcon("C:\\Users\\maycol\\Downloads\\technical-support (1).png"));
+		mnNewMenu.setIcon(new ImageIcon(Sistema.class.getResource("/Img/gestion-de-la-relacion-con-el-cliente.png")));
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mniGestionClientes = new JMenuItem("Clientes");
+		mniGestionClientes.setIcon(new ImageIcon(Sistema.class.getResource("/Img/atencion-al-cliente.png")));
 		mnNewMenu.add(mniGestionClientes);
 		mniGestionClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,6 +99,7 @@ public class Sistema {
 		});
 		
 		JMenuItem MniNuevaVenta = new JMenuItem("Nuevas Ventas");
+		MniNuevaVenta.setIcon(new ImageIcon(Sistema.class.getResource("/Img/carrito-de-compras.png")));
 		mnNewMenu.add(MniNuevaVenta);
 		MniNuevaVenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -101,19 +110,24 @@ public class Sistema {
 		});
 		
 		JMenuItem mniVentas = new JMenuItem(" Ventas");
+		mniVentas.setIcon(new ImageIcon(Sistema.class.getResource("/Img/ventas.png")));
 		mnNewMenu.add(mniVentas);
 		mniVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Ventas ventas = new Form_Ventas();
+				ventas.CleanTable();
+				ventas.Listar_Ventas();
 				dpnEscritorio.add(ventas);
 				ventas.show(); 
 			}
 		});
 		
 		JMenuItem mniGestionProveedor = new JMenuItem("Proveedores");
+		mniGestionProveedor.setIcon(new ImageIcon(Sistema.class.getResource("/Img/proveedor.png")));
 		mnNewMenu.add(mniGestionProveedor);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Nuevos Usuarios");
+		mntmNewMenuItem_1.setIcon(new ImageIcon(Sistema.class.getResource("/Img/nuevo.png")));
 		mnNewMenu.add(mntmNewMenuItem_1);
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -139,6 +153,7 @@ public class Sistema {
 		menuBar.add(MnuProductos);
 		
 		JMenuItem mni = new JMenuItem(" Productos");
+		mni.setIcon(new ImageIcon(Sistema.class.getResource("/Img/bienes.png")));
 		mni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Form_Productos GestionProductos = new Form_Productos();
@@ -151,7 +166,7 @@ public class Sistema {
 		MnuProductos.add(mni);
 		
 		JMenu mnuConfiguracion = new JMenu("Información y Configuración");
-		mnuConfiguracion.setIcon(new ImageIcon("C:\\Users\\maycol\\Downloads\\settings.png"));
+		mnuConfiguracion.setIcon(new ImageIcon(Sistema.class.getResource("/Img/configuraciones.png")));
 		menuBar.add(mnuConfiguracion);
 		
 		JMenu mnNewMenu_1 = new JMenu("Acerca de");

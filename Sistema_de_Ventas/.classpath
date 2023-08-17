@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/maycol/Downloads/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar">
+	<classpathentry kind="lib" path="C:/Users/epsi/Desktop/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/maycol/Downloads/LibrariPDF.jar">
+	<classpathentry kind="lib" path="C:/Users/epsi/Desktop/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40/itextpdf-5.5.13.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

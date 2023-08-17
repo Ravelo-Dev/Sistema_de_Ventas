@@ -530,7 +530,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 			Font negrita = new Font(Font.SANS_SERIF, 12, Font.BOLD);
 			fecha.add(Chunk.NEWLINE);
 			Date dt = new Date();
-			fecha.add("Factura: 1\n" + "Fecha: " + new SimpleDateFormat("dd-MM-yyyy").format(dt) + "\n\n");
+			fecha.add("Factura: \n" + "Fecha: " + new SimpleDateFormat("dd-MM-yyyy").format(dt) + "\n\n");
 			
 			PdfPTable Encabezado = new PdfPTable(4);
 			Encabezado.setWidthPercentage(100);
