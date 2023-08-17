@@ -317,7 +317,7 @@ public class Form_NuevaVenta extends JInternalFrame implements Operaciones_Nueva
 		Tabla_NVenta.getColumnModel().getColumn(1).setPreferredWidth(85);
 		scrollPane_NVenta.setViewportView(Tabla_NVenta);
 		
-		JLabel Lbl_DNI_RUC = new JLabel("DNI/RUC");
+		JLabel Lbl_DNI_RUC = new JLabel("DNI/RNC");
 		Lbl_DNI_RUC.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Lbl_DNI_RUC.setBounds(378, 521, 70, 19);
 		Panel_Main_NVenta.add(Lbl_DNI_RUC);

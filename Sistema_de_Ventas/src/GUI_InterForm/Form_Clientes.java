@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 public class Form_Clientes extends JInternalFrame implements Operaciones_Clientes {
 
@@ -80,7 +81,7 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		Lbl_TituloMain.setBounds(374, 32, 230, 19);
 		Panel_Main_Clientes.add(Lbl_TituloMain);
 
-		JLabel Lbl_DNI_RUC = new JLabel("DNI/RUC");
+		JLabel Lbl_DNI_RUC = new JLabel("DNI/RNC");
 		Lbl_DNI_RUC.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_DNI_RUC.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Lbl_DNI_RUC.setBounds(374, 97, 75, 19);
@@ -207,6 +208,13 @@ public class Form_Clientes extends JInternalFrame implements Operaciones_Cliente
 		Panel_LateralClientes.setBackground(new Color(252, 172, 66));
 		Panel_LateralClientes.setBounds(0, 0, 350, 652);
 		Panel_Main_Clientes.add(Panel_LateralClientes);
+		Panel_LateralClientes.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(Form_Clientes.class.getResource("/Img/LosSocios_Design_FormClientes.png")));
+		lblNewLabel.setBounds(0, 0, 350, 641);
+		Panel_LateralClientes.add(lblNewLabel);
 
 		JPanel Btn_Actualizar = new JPanel();
 		Btn_Actualizar.addMouseListener(new MouseAdapter() {

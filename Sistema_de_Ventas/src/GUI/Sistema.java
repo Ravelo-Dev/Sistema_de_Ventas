@@ -59,7 +59,6 @@ public class Sistema {
 	 */
 	private void initialize() {
 		frmSistemaDeVentaboutique = new JFrame();
-		frmSistemaDeVentaboutique.setTitle("Sistema de Venta-Boutique los Socios");
 		frmSistemaDeVentaboutique.setBounds(100, 100, 1250, 800);
 		frmSistemaDeVentaboutique.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSistemaDeVentaboutique.setLocationRelativeTo(null);

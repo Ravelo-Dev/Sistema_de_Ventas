@@ -92,7 +92,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 		Panel_Main_Proveedores.add(Txt_ID);
 
 
-		JLabel Lbl_RUC = new JLabel("RUC");
+		JLabel Lbl_RUC = new JLabel("RNC");
 		Lbl_RUC.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_RUC.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Lbl_RUC.setBounds(378, 116, 43, 19);
@@ -208,7 +208,7 @@ public class Form_Proveedores extends JInternalFrame implements Operaciones_Prov
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "RUC", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL"
+				"ID", "RNC", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL"
 			}
 		));
 		scrollPane_Proveedores.setViewportView(Tabla_Proveedores);

@@ -62,7 +62,7 @@ public class Form_Config extends JInternalFrame {
 		Lbl_TituloMain.setBounds(374, 30, 261, 19);
 		Panel_Main_Cofig.add(Lbl_TituloMain);
 		
-		JLabel Lbl_RUC = new JLabel("RUC");
+		JLabel Lbl_RUC = new JLabel("RNC");
 		Lbl_RUC.setHorizontalAlignment(SwingConstants.CENTER);
 		Lbl_RUC.setFont(new Font("Roboto", Font.PLAIN, 16));
 		Lbl_RUC.setBounds(374, 105, 39, 19);
